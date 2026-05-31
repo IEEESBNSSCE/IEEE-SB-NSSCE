@@ -21,6 +21,8 @@ export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const pathname = usePathname();
 
+  const isDarkHeader = pathname?.startsWith('/societies/') && pathname !== '/societies';
+
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
@@ -39,10 +41,10 @@ export default function Navbar() {
       <div className="container mx-auto px-6 md:px-12 lg:px-20 flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 z-50 relative">
-          <div className="w-8 h-8 bg-ieee-blue rounded-md flex items-center justify-center text-white font-bold">
+          <div className={cn("w-8 h-8 rounded-md flex items-center justify-center text-white font-bold", isDarkHeader && !scrolled ? "bg-white text-ieee-blue" : "bg-ieee-blue")}>
             I
           </div>
-          <span className={cn("font-heading font-bold text-lg tracking-tight", scrolled ? "text-ieee-blue" : "text-foreground")}>
+          <span className={cn("font-heading font-bold text-lg tracking-tight", scrolled ? "text-ieee-blue" : (isDarkHeader ? "text-white" : "text-foreground"))}>
             IEEE SB NSSCE
           </span>
         </Link>
@@ -57,7 +59,10 @@ export default function Navbar() {
                 <Link
                   key={link.name}
                   href={link.href}
-                  className="relative px-3 py-2 text-sm font-medium transition-colors hover:text-ieee-blue"
+                  className={cn(
+                    "relative px-3 py-2 text-sm font-medium transition-colors hover:text-ieee-blue",
+                    !scrolled && isDarkHeader ? "text-white/90 hover:text-white" : "text-foreground"
+                  )}
                 >
                   <span className="relative z-10">{link.name}</span>
                   {isActive && (
@@ -84,7 +89,7 @@ export default function Navbar() {
 
         {/* Mobile Menu Toggle */}
         <button
-          className="md:hidden z-50 relative p-2"
+          className={cn("md:hidden z-50 relative p-2", !scrolled && isDarkHeader && !mobileMenuOpen ? "text-white" : "text-foreground")}
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           aria-label="Toggle menu"
         >

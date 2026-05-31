@@ -103,7 +103,7 @@ export default function UpcomingEvents() {
                     <div className="flex -space-x-2">
                       {/* Fake attendees avatars */}
                       {[1,2,3].map(i => (
-                        <div key={i} className="w-8 h-8 rounded-full bg-slate-200 border-2 border-white" />
+                        <div key={`event-avatar-${event.id}-${i}`} className="w-8 h-8 rounded-full bg-slate-200 border-2 border-white" />
                       ))}
                       <div className="w-8 h-8 rounded-full bg-slate-100 border-2 border-white flex items-center justify-center text-[10px] font-medium text-slate-500">
                         +42

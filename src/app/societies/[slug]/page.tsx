@@ -27,14 +27,14 @@ export default async function SocietyDetailPage({ params }: { params: Promise<{ 
           <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] ${society.accentColor} opacity-30 rounded-full blur-[120px] mix-blend-screen`} />
           <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center opacity-30 [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]" />
         </div>
-        
+
         <div className="container mx-auto px-6 md:px-12 lg:px-20 relative z-10">
           <div className="max-w-4xl mx-auto text-center flex flex-col items-center">
             {society.logo ? (
               <div className="w-28 h-28 md:w-32 md:h-32 rounded-3xl bg-white flex items-center justify-center mb-8 shadow-2xl shadow-black/50 border-4 border-white/20 overflow-hidden p-3 md:p-4">
-                <img 
-                  src={society.logo} 
-                  alt={society.name} 
+                <img
+                  src={society.logo}
+                  alt={society.name}
                   className="w-full h-full object-contain"
                   style={{ transform: society.logoRotation }}
                 />
@@ -44,11 +44,11 @@ export default async function SocietyDetailPage({ params }: { params: Promise<{ 
                 {society.shortName}
               </div>
             )}
-            
+
             <h1 className="text-5xl md:text-7xl font-heading font-bold mb-6 leading-tight">
               {society.name}
             </h1>
-            
+
             <p className="text-xl text-slate-300 max-w-2xl mx-auto leading-relaxed">
               {society.description}
             </p>
@@ -58,7 +58,7 @@ export default async function SocietyDetailPage({ params }: { params: Promise<{ 
 
       <div className="container mx-auto px-6 md:px-12 lg:px-20 mt-20">
         <div className="flex flex-col lg:flex-row gap-16">
-          
+
           {/* Main Content */}
           <div className="w-full lg:w-2/3 space-y-20">
             {/* Vision & Mission */}
@@ -72,7 +72,7 @@ export default async function SocietyDetailPage({ params }: { params: Promise<{ 
                   {society.vision}
                 </p>
               </div>
-              
+
               <div className="glass p-8 rounded-3xl border border-pale-silver shadow-sm">
                 <div className={`w-12 h-12 rounded-xl flex items-center justify-center text-white mb-6 ${society.accentColor}`}>
                   <Target size={24} />
@@ -97,7 +97,7 @@ export default async function SocietyDetailPage({ params }: { params: Promise<{ 
                   </Link>
                 )}
               </div>
-              
+
               {societyEvents.length > 0 ? (
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   {societyEvents.map((event) => (
@@ -156,7 +156,7 @@ export default async function SocietyDetailPage({ params }: { params: Promise<{ 
                   </Link>
                 )}
               </div>
-              
+
               {societyMembers.length > 0 ? (
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                   {societyMembers.map((member) => (
@@ -195,8 +195,8 @@ export default async function SocietyDetailPage({ params }: { params: Promise<{ 
               <p className="text-muted-foreground mb-8">
                 Become a part of a global network of professionals and students passionate about {society.name.replace('IEEE ', '')}.
               </p>
-              
-              <Link 
+
+              <Link
                 href="https://www.ieee.org/membership/join/index.html"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -205,7 +205,7 @@ export default async function SocietyDetailPage({ params }: { params: Promise<{ 
                 Become a Member
                 <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
               </Link>
-              
+
               <div className="mt-6 pt-6 border-t border-pale-silver/50">
                 <p className="text-sm text-slate-500 text-center">
                   Need help joining? <a href="mailto:ieee@nssce.ac.in" className="font-bold hover:underline">Contact us</a>
@@ -213,7 +213,7 @@ export default async function SocietyDetailPage({ params }: { params: Promise<{ 
               </div>
             </div>
           </div>
-          
+
         </div>
       </div>
     </div>

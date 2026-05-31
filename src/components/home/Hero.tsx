@@ -1,12 +1,12 @@
 "use client";
 
-import { motion, Variants } from "framer-motion";
-import { ArrowRight, Calendar } from "lucide-react";
+import { motion, Variants, useMotionValue, useTransform, useSpring } from "framer-motion";
+import { ArrowRight, Calendar, Cpu, Code, Settings, Sparkles } from "lucide-react";
 import Link from "next/link";
+import { MouseEvent as ReactMouseEvent } from "react";
 
 export default function Hero() {
-  const headingText = "IEEE Student Branch\nNSSCE";
-  const letters = Array.from(headingText);
+  const headingLines = ["IEEE Student Branch", "NSSCE"];
 
   const container: Variants = {
     hidden: { opacity: 0 },
@@ -32,13 +32,60 @@ export default function Hero() {
     },
   };
 
+  // Background Mouse Tracking
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+
+  const springConfig = { damping: 25, stiffness: 100, mass: 0.5 };
+  const smoothX = useSpring(mouseX, springConfig);
+  const smoothY = useSpring(mouseY, springConfig);
+
+  // Background Orbs movement (Subtle parallax)
+  const bgOrbX1 = useTransform(smoothX, [-500, 500], [20, -20]);
+  const bgOrbY1 = useTransform(smoothY, [-500, 500], [20, -20]);
+  const bgOrbX2 = useTransform(smoothX, [-500, 500], [-30, 30]);
+  const bgOrbY2 = useTransform(smoothY, [-500, 500], [-30, 30]);
+
+  // Floating shapes movement (Exaggerated parallax)
+  const floatX1 = useTransform(smoothX, [-500, 500], [70, -70]);
+  const floatY1 = useTransform(smoothY, [-500, 500], [70, -70]);
+  const floatX2 = useTransform(smoothX, [-500, 500], [-90, 90]);
+  const floatY2 = useTransform(smoothY, [-500, 500], [-90, 90]);
+  const floatX3 = useTransform(smoothX, [-500, 500], [40, -40]);
+  const floatY3 = useTransform(smoothY, [-500, 500], [-40, 40]);
+
+  const handleMouseMove = (e: ReactMouseEvent) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = e.clientX - rect.left - rect.width / 2;
+    const y = e.clientY - rect.top - rect.height / 2;
+    mouseX.set(x);
+    mouseY.set(y);
+  };
+
+  const handleMouseLeave = () => {
+    mouseX.set(0);
+    mouseY.set(0);
+  };
+
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
-      {/* Calm static background */}
+    <section
+      className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20"
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+    >
+      {/* Background with Animated Gradient Lighting */}
       <div className="absolute inset-0 z-0 bg-white pointer-events-none">
-        <div className="absolute inset-0 bg-[linear-gradient(118deg,#ffffff_0%,#f3fbff_36%,#f8fbff_68%,#ffffff_100%)]" />
-        <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center opacity-30 [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]" />
-        <div className="absolute inset-x-0 bottom-0 h-36 bg-gradient-to-t from-white via-white/80 to-transparent" />
+        {/* Parallax Orbs */}
+        <motion.div style={{ x: bgOrbX1, y: bgOrbY1 }} className="absolute inset-0">
+          <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-ieee-blue/20 rounded-full blur-[120px] animate-pulse" style={{ animationDuration: '8s' }} />
+        </motion.div>
+
+        <motion.div style={{ x: bgOrbX2, y: bgOrbY2 }} className="absolute inset-0">
+          <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-accent-cyan/20 rounded-full blur-[120px] animate-pulse" style={{ animationDuration: '10s', animationDelay: '2s' }} />
+        </motion.div>
+
+        {/* Subtle grid pattern */}
+        <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]" />
       </div>
 
       <div className="container mx-auto px-6 md:px-12 lg:px-20 z-10 text-center flex flex-col items-center">
@@ -68,18 +115,23 @@ export default function Hero() {
           initial="hidden"
           animate="visible"
         >
-          {letters.map((letter, index) => {
-            if (letter === '\n') return <br key={index} />;
-            return (
-              <motion.span
-                key={index}
-                variants={child}
-                className={letter === " " ? "inline-block w-[0.3em]" : "inline-block text-transparent bg-clip-text bg-gradient-to-br from-foreground to-foreground/70"}
-              >
-                {letter}
-              </motion.span>
-            );
-          })}
+          {headingLines.map((line, lineIndex) => (
+            <span key={`line-${lineIndex}`} className="block">
+              {line.split(" ").map((word, wordIndex) => (
+                <span key={`word-${lineIndex}-${wordIndex}`} className="inline-block whitespace-nowrap mr-[0.3em] last:mr-0">
+                  {Array.from(word).map((letter, letterIndex) => (
+                    <motion.span
+                      key={`letter-${lineIndex}-${wordIndex}-${letterIndex}`}
+                      variants={child}
+                      className="inline-block text-transparent bg-clip-text bg-gradient-to-br from-foreground to-foreground/70"
+                    >
+                      {letter}
+                    </motion.span>
+                  ))}
+                </span>
+              ))}
+            </span>
+          ))}
         </motion.h1>
 
         {/* Subheading */}
@@ -118,6 +170,42 @@ export default function Hero() {
         </motion.div>
       </div>
 
+      {/* Floating Engineering Elements (Background) Parallax tracking */}
+      <motion.div
+        style={{ x: floatX1, y: floatY1 }}
+        className="absolute left-[5%] md:left-[10%] top-[20%] text-ieee-blue/20 -z-10"
+      >
+        <motion.div
+          animate={{ rotate: [0, 15, 0], y: [0, -20, 0] }}
+          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+        >
+          <Cpu size={100} strokeWidth={1} className="w-16 h-16 md:w-[100px] md:h-[100px]" />
+        </motion.div>
+      </motion.div>
+
+      <motion.div
+        style={{ x: floatX2, y: floatY2 }}
+        className="absolute right-[5%] md:right-[12%] bottom-[25%] text-accent-cyan/20 -z-10"
+      >
+        <motion.div
+          animate={{ rotate: [0, -15, 0], y: [0, 30, 0] }}
+          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+        >
+          <Code size={120} strokeWidth={1} className="w-20 h-20 md:w-[120px] md:h-[120px]" />
+        </motion.div>
+      </motion.div>
+
+      <motion.div
+        style={{ x: floatX3, y: floatY3 }}
+        className="absolute left-[10%] md:left-[18%] bottom-[15%] text-slate-400/20 -z-10"
+      >
+        <motion.div
+          animate={{ rotate: [0, 30, 0], y: [0, 15, 0] }}
+          transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+        >
+          <Settings size={80} strokeWidth={1.5} className="w-12 h-12 md:w-[80px] md:h-[80px]" />
+        </motion.div>
+      </motion.div>
     </section>
   );
 }

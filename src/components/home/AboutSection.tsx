@@ -95,7 +95,7 @@ export default function AboutSection() {
             <div className="mt-10 flex gap-4">
               <div className="flex -space-x-4">
                 {[1, 2, 3, 4].map((i) => (
-                  <div key={i} className={`w-12 h-12 rounded-full border-2 border-white shadow-sm flex items-center justify-center font-bold text-white z-${5-i}`} style={{ backgroundColor: ['#00629B', '#00C2FF', '#5F9EA0', '#FF9900'][i-1] }}>
+                  <div key={`about-avatar-${i}`} className={`w-12 h-12 rounded-full border-2 border-white shadow-sm flex items-center justify-center font-bold text-white z-${5-i}`} style={{ backgroundColor: ['#00629B', '#00C2FF', '#5F9EA0', '#FF9900'][i-1] }}>
                     {['C', 'P', 'R', 'W'][i-1]}
                   </div>
                 ))}
