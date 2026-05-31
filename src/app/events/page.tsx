@@ -7,6 +7,74 @@ import Link from "next/link";
 import { events } from "@/data/events";
 import { societies } from "@/data/societies";
 
+const EventCard = ({ event }: { event: typeof events[0] }) => {
+  const society = societies.find(s => s.id === event.societyId);
+  return (
+    <motion.div
+      layout
+      initial={{ opacity: 0, scale: 0.9 }}
+      animate={{ opacity: 1, scale: 1 }}
+      exit={{ opacity: 0, scale: 0.9 }}
+      className="group h-full flex"
+    >
+      <div className="bg-white rounded-2xl border border-pale-silver overflow-hidden shadow-sm hover:shadow-xl hover:shadow-ieee-blue/10 transition-all duration-300 w-full flex flex-col relative transform hover:-translate-y-2">
+        {/* Image Banner */}
+        <div className="relative h-48 w-full bg-slate-100 overflow-hidden">
+          <div className={`absolute inset-0 ${society?.accentColor || 'bg-ieee-blue'} opacity-20 group-hover:scale-105 transition-transform duration-500 flex items-center justify-center`}>
+            <span className="font-heading text-slate-800/20 font-black text-4xl uppercase px-4 text-center leading-none">
+              {event.title.substring(0, 15)}
+            </span>
+          </div>
+          <div className="absolute top-4 left-4 z-10 flex gap-2">
+            {society && (
+              <span className={`px-3 py-1 text-white text-xs font-bold rounded-full uppercase tracking-wide shadow-sm ${society.accentColor}`}>
+                {society.shortName}
+              </span>
+            )}
+            {event.status === 'featured' && (
+              <span className="px-3 py-1 bg-yellow-400 text-yellow-900 text-xs font-bold rounded-full uppercase tracking-wide shadow-sm">
+                Featured
+              </span>
+            )}
+          </div>
+        </div>
+
+        {/* Content */}
+        <div className="p-6 flex flex-col flex-grow">
+          <h3 className="font-heading font-bold text-xl mb-3 line-clamp-2 group-hover:text-ieee-blue transition-colors">
+            {event.title}
+          </h3>
+          
+          <p className="text-muted-foreground text-sm line-clamp-2 mb-6">
+            {event.description}
+          </p>
+          
+          <div className="space-y-2 mb-6 mt-auto">
+            <div className="flex items-center text-sm text-slate-600 font-medium">
+              <CalendarIcon size={16} className="mr-2 text-ieee-blue/70" />
+              {new Date(event.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
+            </div>
+            <div className="flex items-center text-sm text-slate-600 font-medium">
+              <MapPin size={16} className="mr-2 text-ieee-blue/70" />
+              <span className="line-clamp-1">{event.venue}</span>
+            </div>
+          </div>
+          
+          <div className="pt-4 border-t border-pale-silver/50 flex items-center justify-between">
+            <Link 
+              href={`/events/${event.slug}`}
+              className="text-sm font-semibold text-ieee-blue group-hover:text-ieee-blue/80 transition-colors flex items-center gap-1"
+            >
+              {event.status === 'past' ? 'View Recap' : 'Register Now'}
+              <ArrowRight size={16} className="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
+            </Link>
+          </div>
+        </div>
+      </div>
+    </motion.div>
+  );
+};
+
 export default function EventsPage() {
   const [searchQuery, setSearchQuery] = useState("");
   const [activeSociety, setActiveSociety] = useState<string>("all");
@@ -26,73 +94,7 @@ export default function EventsPage() {
   const upcomingEvents = filteredEvents.filter(e => e.status === "upcoming");
   const pastEvents = filteredEvents.filter(e => e.status === "past");
 
-  const EventCard = ({ event }: { event: typeof events[0] }) => {
-    const society = societies.find(s => s.id === event.societyId);
-    return (
-      <motion.div
-        layout
-        initial={{ opacity: 0, scale: 0.9 }}
-        animate={{ opacity: 1, scale: 1 }}
-        exit={{ opacity: 0, scale: 0.9 }}
-        className="group h-full flex"
-      >
-        <div className="bg-white rounded-2xl border border-pale-silver overflow-hidden shadow-sm hover:shadow-xl hover:shadow-ieee-blue/10 transition-all duration-300 w-full flex flex-col relative transform hover:-translate-y-2">
-          {/* Image Banner */}
-          <div className="relative h-48 w-full bg-slate-100 overflow-hidden">
-            <div className={`absolute inset-0 ${society?.accentColor || 'bg-ieee-blue'} opacity-20 group-hover:scale-105 transition-transform duration-500 flex items-center justify-center`}>
-              <span className="font-heading text-slate-800/20 font-black text-4xl uppercase px-4 text-center leading-none">
-                {event.title.substring(0, 15)}
-              </span>
-            </div>
-            <div className="absolute top-4 left-4 z-10 flex gap-2">
-              {society && (
-                <span className={`px-3 py-1 text-white text-xs font-bold rounded-full uppercase tracking-wide shadow-sm ${society.accentColor}`}>
-                  {society.shortName}
-                </span>
-              )}
-              {event.status === 'featured' && (
-                <span className="px-3 py-1 bg-yellow-400 text-yellow-900 text-xs font-bold rounded-full uppercase tracking-wide shadow-sm">
-                  Featured
-                </span>
-              )}
-            </div>
-          </div>
 
-          {/* Content */}
-          <div className="p-6 flex flex-col flex-grow">
-            <h3 className="font-heading font-bold text-xl mb-3 line-clamp-2 group-hover:text-ieee-blue transition-colors">
-              {event.title}
-            </h3>
-            
-            <p className="text-muted-foreground text-sm line-clamp-2 mb-6">
-              {event.description}
-            </p>
-            
-            <div className="space-y-2 mb-6 mt-auto">
-              <div className="flex items-center text-sm text-slate-600 font-medium">
-                <CalendarIcon size={16} className="mr-2 text-ieee-blue/70" />
-                {new Date(event.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
-              </div>
-              <div className="flex items-center text-sm text-slate-600 font-medium">
-                <MapPin size={16} className="mr-2 text-ieee-blue/70" />
-                <span className="line-clamp-1">{event.venue}</span>
-              </div>
-            </div>
-            
-            <div className="pt-4 border-t border-pale-silver/50 flex items-center justify-between">
-              <Link 
-                href={`/events/${event.slug}`}
-                className="text-sm font-semibold text-ieee-blue group-hover:text-ieee-blue/80 transition-colors flex items-center gap-1"
-              >
-                {event.status === 'past' ? 'View Recap' : 'Register Now'}
-                <ArrowRight size={16} className="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
-              </Link>
-            </div>
-          </div>
-        </div>
-      </motion.div>
-    );
-  };
 
   return (
     <div className="min-h-screen pt-24 pb-20 bg-slate-50/50">
@@ -179,7 +181,7 @@ export default function EventsPage() {
       <section className="container mx-auto px-6 md:px-12 lg:px-20">
         <AnimatePresence mode="popLayout">
           {featuredEvents.length > 0 && (
-            <motion.div layout initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="mb-16">
+            <motion.div key="featured-events" layout initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="mb-16">
               <h2 className="text-2xl font-heading font-bold mb-6 flex items-center gap-2">
                 <span className="w-2 h-6 bg-accent-cyan rounded-full inline-block"></span>
                 Featured Events
@@ -191,7 +193,7 @@ export default function EventsPage() {
           )}
 
           {upcomingEvents.length > 0 && (
-            <motion.div layout initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="mb-16">
+            <motion.div key="upcoming-events" layout initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="mb-16">
               <h2 className="text-2xl font-heading font-bold mb-6 flex items-center gap-2">
                 <span className="w-2 h-6 bg-ieee-blue rounded-full inline-block"></span>
                 Upcoming Events
@@ -203,7 +205,7 @@ export default function EventsPage() {
           )}
 
           {pastEvents.length > 0 && (
-            <motion.div layout initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+            <motion.div key="past-events" layout initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
               <h2 className="text-2xl font-heading font-bold mb-6 flex items-center gap-2 text-slate-500">
                 <span className="w-2 h-6 bg-slate-300 rounded-full inline-block"></span>
                 Past Events
@@ -215,7 +217,7 @@ export default function EventsPage() {
           )}
 
           {filteredEvents.length === 0 && (
-            <motion.div layout initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="py-20 text-center text-muted-foreground border-2 border-dashed border-pale-silver rounded-2xl">
+            <motion.div key="no-events" layout initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="py-20 text-center text-muted-foreground border-2 border-dashed border-pale-silver rounded-2xl">
               No events found matching your criteria.
             </motion.div>
           )}

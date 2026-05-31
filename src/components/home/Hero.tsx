@@ -84,6 +84,8 @@ export default function Hero() {
         <motion.div style={{ x: bgOrbX2, y: bgOrbY2 }} className="absolute inset-0">
           <div className="absolute bottom-[-10%] left-[-10%] w-[600px] h-[600px] bg-ieee-blue/10 rounded-full blur-[120px] animate-pulse" style={{ animationDuration: '10s', animationDelay: '2s' }} />
         </motion.div>
+
+
       </div>
 
       {/* Left Features List (Visible on xl screens and up) */}

@@ -31,30 +31,7 @@ const ctaCards = [
 export default function CtaSection() {
   return (
     <section className="py-24 relative overflow-hidden">
-      {/* Animated Flowing Gradient Background */}
-      <div className="absolute inset-0 z-0 bg-white">
-        <div className="absolute inset-0 bg-gradient-to-br from-ieee-blue/5 via-accent-cyan/10 to-ieee-blue/5 opacity-50" />
-        
-        {/* Animated Orbs */}
-        <motion.div 
-          animate={{ 
-            x: [0, 100, 0],
-            y: [0, 50, 0],
-            scale: [1, 1.2, 1]
-          }}
-          transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-          className="absolute -top-[20%] -left-[10%] w-[50%] h-[70%] rounded-full bg-ieee-blue/20 blur-[100px]"
-        />
-        <motion.div 
-          animate={{ 
-            x: [0, -100, 0],
-            y: [0, -50, 0],
-            scale: [1, 1.5, 1]
-          }}
-          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-          className="absolute -bottom-[20%] -right-[10%] w-[50%] h-[70%] rounded-full bg-accent-cyan/20 blur-[100px]"
-        />
-      </div>
+      <div className="absolute inset-0 z-0 bg-white" />
 
       <div className="container mx-auto px-6 md:px-12 lg:px-20 relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-16">

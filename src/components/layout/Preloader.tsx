@@ -1,12 +1,14 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { Rocket } from "lucide-react";
 
 export default function Preloader() {
   const [isLoading, setIsLoading] = useState(true);
   const [stars, setStars] = useState<any[]>([]);
+
+  const [isMounted, setIsMounted] = useState(true);
 
   useEffect(() => {
     // Generate random stars only on the client to prevent hydration mismatch
@@ -21,25 +23,30 @@ export default function Preloader() {
       }))
     );
 
-    // Show the preloader for exactly 2.5 seconds for the full rocket effect
-    const timer = setTimeout(() => {
+    // Fade out after 2.5s
+    const fadeTimer = setTimeout(() => {
       setIsLoading(false);
     }, 2500);
 
-    return () => clearTimeout(timer);
+    // Hard unmount after 3.5s to prevent getting stuck
+    const unmountTimer = setTimeout(() => {
+      setIsMounted(false);
+    }, 3500);
+
+    return () => {
+      clearTimeout(fadeTimer);
+      clearTimeout(unmountTimer);
+    };
   }, []);
 
+  if (!isMounted) return null;
+
   return (
-    <AnimatePresence>
-      {isLoading && (
+    <>
         <motion.div
-          key="preloader"
-          initial={{ opacity: 1 }}
-          exit={{ 
-            opacity: 0,
-            transition: { duration: 0.8, ease: "easeInOut", delay: 0.2 } 
-          }}
-          className="fixed inset-0 z-[100] bg-[#0a0f1c] flex flex-col items-center justify-center overflow-hidden"
+          animate={{ opacity: isLoading ? 1 : 0 }}
+          transition={{ duration: 0.8, ease: "easeInOut" }}
+          className={`fixed inset-0 z-[100] bg-[#0a0f1c] flex flex-col items-center justify-center overflow-hidden ${isLoading ? 'pointer-events-auto' : 'pointer-events-none'}`}
         >
           {/* Moving Stars Background */}
           <div className="absolute inset-0 overflow-hidden">
@@ -150,7 +157,6 @@ export default function Preloader() {
             </motion.div>
           </div>
         </motion.div>
-      )}
-    </AnimatePresence>
+    </>
   );
 }

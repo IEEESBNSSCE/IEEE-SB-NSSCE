@@ -11,7 +11,7 @@ const SocialIcon = ({ name }: { name: string }) => {
 
 export default function Footer() {
   return (
-    <footer className="relative bg-slate-50 pt-20 pb-10 border-t border-pale-silver overflow-hidden">
+    <footer className="relative bg-gradient-to-b from-white via-sky-100/50 to-sky-400 pt-20 pb-10 overflow-hidden border-none -mt-[1px]">
       {/* Animated gradient background snippet */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden -z-10 opacity-30 pointer-events-none">
         <div className="absolute -top-[50%] -left-[10%] w-[70%] h-[70%] rounded-full bg-ieee-blue/10 blur-3xl animate-pulse" />
@@ -30,7 +30,7 @@ export default function Footer() {
                 IEEE SB NSSCE
               </span>
             </Link>
-            <p className="text-muted-foreground mb-8 max-w-sm">
+            <p className="text-black mb-8 max-w-sm">
               Empowering students to innovate and build the future through technology, leadership, and global networking.
             </p>
             <div className="space-y-3">
@@ -58,7 +58,7 @@ export default function Footer() {
             <ul className="space-y-3">
               {['Home', 'About Us', 'Events', 'Team', 'Achievements', 'Contact'].map((item) => (
                 <li key={item}>
-                  <Link href="#" className="text-muted-foreground hover:text-ieee-blue transition-colors text-sm flex items-center gap-1 group">
+                  <Link href="#" className="text-black hover:text-ieee-blue transition-colors text-sm flex items-center gap-1 group">
                     {item}
                     <ArrowUpRight size={14} className="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
                   </Link>
@@ -73,7 +73,7 @@ export default function Footer() {
             <ul className="space-y-3">
               {['Computer Society', 'Power & Energy', 'Robotics & Auto', 'Women In Eng.', 'ComSoc', 'More...'].map((item) => (
                 <li key={item}>
-                  <Link href="/societies" className="text-muted-foreground hover:text-ieee-blue transition-colors text-sm">
+                  <Link href="/societies" className="text-black hover:text-ieee-blue transition-colors text-sm">
                     {item}
                   </Link>
                 </li>
@@ -85,7 +85,7 @@ export default function Footer() {
           <div>
             <h4 className="font-heading font-semibold text-lg mb-6">Connect</h4>
             <div className="space-y-4 mb-8">
-              <p className="text-sm text-muted-foreground">
+              <p className="text-sm text-black">
                 NSS College of Engineering<br />
                 Akathethara, Palakkad<br />
                 Kerala 678008, India
@@ -95,16 +95,16 @@ export default function Footer() {
               </a>
             </div>
             <div className="flex gap-4">
-              <a href="#" className="w-10 h-10 rounded-full bg-white border border-pale-silver flex items-center justify-center text-muted-foreground hover:text-ieee-blue hover:border-ieee-blue transition-all hover:scale-110">
+              <a href="#" className="w-10 h-10 rounded-full bg-white border border-pale-silver flex items-center justify-center text-black hover:text-ieee-blue hover:border-ieee-blue transition-all hover:scale-110">
                 <SocialIcon name="linkedin" />
               </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-white border border-pale-silver flex items-center justify-center text-muted-foreground hover:text-ieee-blue hover:border-ieee-blue transition-all hover:scale-110">
+              <a href="#" className="w-10 h-10 rounded-full bg-white border border-pale-silver flex items-center justify-center text-black hover:text-ieee-blue hover:border-ieee-blue transition-all hover:scale-110">
                 <SocialIcon name="instagram" />
               </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-white border border-pale-silver flex items-center justify-center text-muted-foreground hover:text-ieee-blue hover:border-ieee-blue transition-all hover:scale-110">
+              <a href="#" className="w-10 h-10 rounded-full bg-white border border-pale-silver flex items-center justify-center text-black hover:text-ieee-blue hover:border-ieee-blue transition-all hover:scale-110">
                 <SocialIcon name="twitter" />
               </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-white border border-pale-silver flex items-center justify-center text-muted-foreground hover:text-ieee-blue hover:border-ieee-blue transition-all hover:scale-110">
+              <a href="#" className="w-10 h-10 rounded-full bg-white border border-pale-silver flex items-center justify-center text-black hover:text-ieee-blue hover:border-ieee-blue transition-all hover:scale-110">
                 <SocialIcon name="github" />
               </a>
             </div>
@@ -113,13 +113,13 @@ export default function Footer() {
 
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-pale-silver flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-xs text-muted-foreground">
+          <p className="text-xs text-black font-medium">
             © {new Date().getFullYear()} IEEE Student Branch NSSCE. All rights reserved.
           </p>
           <div className="flex gap-6">
-            <a href="https://www.ieee.org/" target="_blank" rel="noopener noreferrer" className="text-xs text-muted-foreground hover:text-ieee-blue">IEEE.org</a>
-            <a href="https://ieeexplore.ieee.org/" target="_blank" rel="noopener noreferrer" className="text-xs text-muted-foreground hover:text-ieee-blue">IEEE Xplore</a>
-            <a href="https://www.ieee.org/sitemap.html" target="_blank" rel="noopener noreferrer" className="text-xs text-muted-foreground hover:text-ieee-blue">Sitemap</a>
+            <a href="https://www.ieee.org/" target="_blank" rel="noopener noreferrer" className="text-xs text-black hover:text-ieee-blue">IEEE.org</a>
+            <a href="https://ieeexplore.ieee.org/" target="_blank" rel="noopener noreferrer" className="text-xs text-black hover:text-ieee-blue">IEEE Xplore</a>
+            <a href="https://www.ieee.org/sitemap.html" target="_blank" rel="noopener noreferrer" className="text-xs text-black hover:text-ieee-blue">Sitemap</a>
           </div>
         </div>
       </div>

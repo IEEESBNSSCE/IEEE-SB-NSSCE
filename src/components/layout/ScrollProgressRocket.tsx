@@ -11,7 +11,7 @@ export default function ScrollProgressRocket() {
 
   // Show the rocket only after scrolling down 5% of the page
   useEffect(() => {
-    return scrollYProgress.onChange((latest) => {
+    return scrollYProgress.on("change", (latest) => {
       setIsVisible(latest > 0.05);
     });
   }, [scrollYProgress]);
