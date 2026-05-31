@@ -50,7 +50,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="relative bg-gradient-to-b from-white via-sky-100/50 to-sky-400 pt-20 pb-10 overflow-hidden border-none -mt-[1px]">
+    <footer className="relative bg-gradient-to-b from-white via-sky-200 to-sky-600 pt-20 pb-10 overflow-hidden border-none -mt-[1px]">
       {/* Animated gradient background snippet */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden -z-10 opacity-30 pointer-events-none">
         <div className="absolute -top-[50%] -left-[10%] w-[70%] h-[70%] rounded-full bg-ieee-blue/10 blur-3xl animate-pulse" />
@@ -167,7 +167,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-8 border-t border-black flex flex-col md:flex-row items-center justify-between gap-4">
+        <div className="pt-8 border-t border-black/20 flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="flex flex-col items-center md:items-start gap-1">
             <p className="text-xs text-black font-medium">
               © {new Date().getFullYear()} IEEE Student Branch NSSCE. All rights reserved.
