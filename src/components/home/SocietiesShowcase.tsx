@@ -97,36 +97,50 @@ export default function SocietiesShowcase() {
       
       {/* Sticky Note: Vision (Desktop only) */}
       <motion.div 
-        initial={{ opacity: 0, x: -50, rotate: -5 }}
-        whileInView={{ opacity: 1, x: 0, rotate: -3 }}
+        initial={{ opacity: 0, x: -50 }}
+        whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true, margin: "-100px" }}
-        className="hidden lg:block absolute top-1/4 left-8 xl:left-16 w-56 xl:w-64 bg-yellow-100/90 backdrop-blur-sm p-6 shadow-xl z-20 border border-yellow-200/50"
-        style={{ borderRadius: "2px 15px 2px 15px" }}
+        className="hidden lg:block absolute top-1/4 left-8 xl:left-16 z-20"
       >
-        <div className="absolute -top-3 left-1/2 -translate-x-1/2 text-red-500/80">
-          <Pin size={24} fill="currentColor" className="drop-shadow-md" />
-        </div>
-        <h3 className="font-heading font-bold text-lg text-yellow-900 mb-2">IEEE Vision</h3>
-        <p className="text-sm text-yellow-800 font-medium leading-relaxed italic">
-          "IEEE will be essential to the global technical community... and be universally recognized for the contributions of technology in improving global conditions."
-        </p>
+        <motion.div
+          animate={{ rotate: [-3, 3, -3] }}
+          transition={{ repeat: Infinity, duration: 1.8, ease: "easeInOut" }}
+          whileHover={{ rotate: -3, transition: { duration: 0.2 } }}
+          className="w-56 xl:w-64 bg-yellow-100/90 backdrop-blur-sm p-6 shadow-xl border border-yellow-200/50 cursor-pointer hover:shadow-2xl transition-shadow"
+          style={{ borderRadius: "2px 15px 2px 15px", transformOrigin: "top center" }}
+        >
+          <div className="absolute -top-3 left-1/2 -translate-x-1/2 text-red-500/80">
+            <Pin size={24} fill="currentColor" className="drop-shadow-md" />
+          </div>
+          <h3 className="font-heading font-bold text-lg text-yellow-900 mb-2">IEEE Vision</h3>
+          <p className="text-sm text-yellow-800 font-medium leading-relaxed italic">
+            "IEEE will be essential to the global technical community... and be universally recognized for the contributions of technology in improving global conditions."
+          </p>
+        </motion.div>
       </motion.div>
 
       {/* Sticky Note: Mission (Desktop only) */}
       <motion.div 
-        initial={{ opacity: 0, x: 50, rotate: 5 }}
-        whileInView={{ opacity: 1, x: 0, rotate: 4 }}
+        initial={{ opacity: 0, x: 50 }}
+        whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true, margin: "-100px" }}
-        className="hidden lg:block absolute bottom-24 right-8 xl:right-16 w-56 xl:w-64 bg-sky-50/90 backdrop-blur-sm p-6 shadow-xl z-20 border border-sky-100/50"
-        style={{ borderRadius: "15px 2px 15px 2px" }}
+        className="hidden lg:block absolute bottom-24 right-8 xl:right-16 z-20"
       >
-        <div className="absolute -top-3 left-1/2 -translate-x-1/2 text-slate-500/80">
-          <Pin size={24} fill="currentColor" className="drop-shadow-md" />
-        </div>
-        <h3 className="font-heading font-bold text-lg text-sky-900 mb-2">IEEE Mission</h3>
-        <p className="text-sm text-sky-800 font-medium leading-relaxed italic">
-          "IEEE's core purpose is to foster technological innovation and excellence for the benefit of humanity."
-        </p>
+        <motion.div
+          animate={{ rotate: [4, -2, 4] }}
+          transition={{ repeat: Infinity, duration: 1.8, ease: "easeInOut" }}
+          whileHover={{ rotate: 4, transition: { duration: 0.4 } }}
+          className="w-56 xl:w-64 bg-sky-50/90 backdrop-blur-sm p-6 shadow-xl border border-sky-100/50 cursor-pointer hover:shadow-2xl transition-shadow"
+          style={{ borderRadius: "15px 2px 15px 2px", transformOrigin: "top center" }}
+        >
+          <div className="absolute -top-3 left-1/2 -translate-x-1/2 text-slate-500/80">
+            <Pin size={24} fill="currentColor" className="drop-shadow-md" />
+          </div>
+          <h3 className="font-heading font-bold text-lg text-sky-900 mb-2">IEEE Mission</h3>
+          <p className="text-sm text-sky-800 font-medium leading-relaxed italic">
+            "IEEE's core purpose is to foster technological innovation and excellence for the benefit of humanity."
+          </p>
+        </motion.div>
       </motion.div>
 
       <div className="container mx-auto px-4 md:px-12 lg:px-20 relative z-10">

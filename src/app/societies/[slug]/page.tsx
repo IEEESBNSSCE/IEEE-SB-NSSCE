@@ -197,7 +197,7 @@ export default async function SocietyDetailPage({ params }: { params: Promise<{ 
               </p>
 
               <Link
-                href="https://www.ieee.org/membership/join/index.html"
+                href={society.globalWebsite || "https://www.ieee.org/membership/join/index.html"}
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`w-full py-4 text-white rounded-xl font-bold transition-all shadow-md flex items-center justify-center gap-2 group ${society.accentColor}`}

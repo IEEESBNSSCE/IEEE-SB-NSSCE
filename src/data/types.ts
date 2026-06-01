@@ -10,6 +10,7 @@ export interface Society {
   logo: string;
   logoRotation?: string;
   heroImage?: string;
+  globalWebsite?: string;
 }
 
 export interface Member {

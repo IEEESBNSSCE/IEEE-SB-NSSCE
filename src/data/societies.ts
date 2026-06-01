@@ -11,6 +11,7 @@ export const societies: Society[] = [
     mission: "To advance the theory, practice, and application of computer and information processing science and technology.",
     accentColor: "bg-orange-500",
     logo: "https://sb-dataset.vercel.app/chapters/CS.jpg",
+    globalWebsite: "https://www.computer.org/",
   },
   {
     id: "pes",
@@ -22,6 +23,7 @@ export const societies: Society[] = [
     mission: "To be the leading provider of scientific and engineering information on electric power and energy for the betterment of society.",
     accentColor: "bg-green-600",
     logo: "https://sb-dataset.vercel.app/chapters/PES.jpg",
+    globalWebsite: "https://ieee-pes.org/",
   },
   {
     id: "ras",
@@ -33,6 +35,7 @@ export const societies: Society[] = [
     mission: "To foster the development and facilitate the exchange of scientific and technological knowledge in Robotics and Automation.",
     accentColor: "bg-red-600",
     logo: "https://sb-dataset.vercel.app/chapters/RAS.png",
+    globalWebsite: "https://www.ieee-ras.org/",
   },
   {
     id: "wie",
@@ -44,6 +47,7 @@ export const societies: Society[] = [
     mission: "To facilitate the recruitment and retention of women in technical disciplines globally.",
     accentColor: "bg-purple-600",
     logo: "https://sb-dataset.vercel.app/chapters/WIE.jpg",
+    globalWebsite: "https://wie.ieee.org/",
   },
   {
     id: "ias",
@@ -55,6 +59,7 @@ export const societies: Society[] = [
     mission: "To advance the theory and practice of electrical and electronic systems.",
     accentColor: "bg-emerald-500",
     logo: "https://sb-dataset.vercel.app/chapters/IAS.jpg",
+    globalWebsite: "https://ias.ieee.org/",
   },
   {
     id: "comsoc",
@@ -66,6 +71,7 @@ export const societies: Society[] = [
     mission: "To promote the advancement of science, technology and applications in communications and related disciplines.",
     accentColor: "bg-blue-600",
     logo: "https://sb-dataset.vercel.app/chapters/ComSoc.jpg",
+    globalWebsite: "https://www.comsoc.org/",
   },
   {
     id: "ims",
@@ -77,6 +83,7 @@ export const societies: Society[] = [
     mission: "To advance the theory and practice of instrumentation and measurement science and technology through collaboration, education, and professional development.",
     accentColor: "bg-teal-500",
     logo: "https://sb-dataset.vercel.app/chapters/IMS.jpg",
+    globalWebsite: "https://ieee-ims.org/",
   },
   {
     id: "vts",
@@ -88,6 +95,7 @@ export const societies: Society[] = [
     mission: "To advance the theory and practice of vehicular technology through collaboration, education, and professional development.",
     accentColor: "bg-indigo-500",
     logo: "https://sb-dataset.vercel.app/chapters/VTS.jpg",
+    globalWebsite: "https://vtsociety.org/",
   },
   {
     id: "ies",
@@ -99,6 +107,7 @@ export const societies: Society[] = [
     mission: "To foster the development and facilitate the exchange of scientific and technological knowledge in solid-state circuits.",
     accentColor: "bg-rose-500",
     logo: "https://sb-dataset.vercel.app/chapters/IES.jpg",
+    globalWebsite: "https://www.ieee-ies.org/",
   },
   {
     id: "pels",
@@ -110,6 +119,7 @@ export const societies: Society[] = [
     mission: "To advance the theory and practice of power electronics and related disciplines.",
     accentColor: "bg-amber-500",
     logo: "https://sb-dataset.vercel.app/chapters/PELS.jpg",
+    globalWebsite: "https://www.ieee-pels.org/",
   },
   {
     id: "edsoc",
@@ -121,6 +131,7 @@ export const societies: Society[] = [
     mission: "To inspire, educate, and connect individuals passionate about advancing electrical and computer engineering education through innovative programs, resources, and global collaboration.",
     accentColor: "bg-cyan-600",
     logo: "https://sb-dataset.vercel.app/chapters/edsoc.png",
+    globalWebsite: "https://ieee-edusociety.org/",
   },
   {
     id: "mtts",
@@ -132,6 +143,7 @@ export const societies: Society[] = [
     mission: "To foster technological innovation and excellence in microwave theory and techniques.",
     accentColor: "bg-fuchsia-600",
     logo: "https://sb-dataset.vercel.app/chapters/mtts.jpg",
+    globalWebsite: "https://mtt.org/",
   },
   {
     id: "sight",
@@ -143,5 +155,6 @@ export const societies: Society[] = [
     mission: "To engage the IEEE community to foster sustainable development in underserved communities.",
     accentColor: "bg-yellow-600",
     logo: "https://sb-dataset.vercel.app/chapters/SIGHT.jpg",
+    globalWebsite: "https://sight.ieee.org/",
   }
 ];

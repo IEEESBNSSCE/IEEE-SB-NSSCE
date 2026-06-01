@@ -10,7 +10,7 @@ export default function UpcomingEvents() {
   const upcomingEvents = events.filter(e => e.status === "upcoming" || e.status === "featured").slice(0, 3);
 
   return (
-    <section className="pt-12 pb-24 relative bg-white">
+    <section className="pt-12 pb-32 relative bg-white">
       <div className="container mx-auto px-6 md:px-12 lg:px-20">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
           <div className="max-w-2xl">
@@ -128,6 +128,13 @@ export default function UpcomingEvents() {
             </div>
           )}
         </div>
+      </div>
+
+      {/* SVG Wave Divider */}
+      <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none rotate-180 text-sky-50">
+        <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none" className="relative block w-full h-[60px] md:h-[100px]">
+          <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" fill="currentColor"></path>
+        </svg>
       </div>
     </section>
   );
