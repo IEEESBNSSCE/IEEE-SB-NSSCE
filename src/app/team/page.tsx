@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Search, ChevronLeft, ChevronRight, Pin } from "lucide-react";
 import Image from "next/image";
@@ -24,14 +24,53 @@ export default function TeamPage() {
 
   const years = Array.from({ length: 2026 - 2018 + 1 }, (_, i) => 2026 - i);
 
+  const hiddenSocietiesConfig: Record<string, number[]> = {
+    mtts: [2023, 2022, 2021, 2020, 2019, 2018],
+    edsoc: [2021, 2020, 2019, 2018],
+    ies: [2020, 2019, 2018],
+    cs: [2019, 2018],
+    ras: [2019, 2018],
+    comsoc: [2019, 2018],
+    ims: [2019, 2018],
+    vts: [2019, 2018],
+    sight: [2019, 2018],
+    pels: [2018]
+  };
+
+  const hiddenWebTeamYears = [2025, 2024, 2023, 2022, 2021, 2019, 2018];
+  const hiddenMediaTeamYears = [2025, 2024, 2023, 2022, 2021, 2020, 2019, 2018];
+  const hiddenDesignTeamYears = [2025, 2024, 2023, 2022, 2021, 2020, 2019, 2018];
+  const hiddenContentTeamYears = [2025, 2024, 2023, 2022, 2021, 2018];
+
+  const teamTabsConfig = [
+    { id: "web-team", name: "Web Team", hiddenYears: hiddenWebTeamYears },
+    { id: "media-team", name: "Media Team", hiddenYears: hiddenMediaTeamYears },
+    { id: "design-team", name: "Design Team", hiddenYears: hiddenDesignTeamYears },
+    { id: "content-team", name: "Content Team", hiddenYears: hiddenContentTeamYears }
+  ];
+
   const tabs = [
     { id: "execom", name: "SB ExeCom" },
-    ...societies.map(s => ({ id: s.id, name: s.shortName })),
-    { id: "web-team", name: "Web Team" },
-    { id: "media-team", name: "Media Team" },
-    { id: "design-team", name: "Design Team" },
-    { id: "content-team", name: "Content Team" }
+    ...societies
+      .filter(s => {
+        const hiddenYears = hiddenSocietiesConfig[s.id];
+        if (hiddenYears && hiddenYears.includes(selectedYear)) return false;
+        return true;
+      })
+      .map(s => ({ id: s.id, name: s.shortName })),
+    ...teamTabsConfig
+      .filter(t => !t.hiddenYears.includes(selectedYear))
+      .map(t => ({ id: t.id, name: t.name }))
   ];
+
+  useEffect(() => {
+    const isHiddenTeam = teamTabsConfig.some(t => t.id === activeTab && t.hiddenYears.includes(selectedYear));
+    const isHiddenSociety = hiddenSocietiesConfig[activeTab] && hiddenSocietiesConfig[activeTab].includes(selectedYear);
+    
+    if (isHiddenTeam || isHiddenSociety) {
+      setActiveTab("execom");
+    }
+  }, [selectedYear, activeTab]);
 
   const filteredMembers = members.filter(member => {
     const matchesTab = member.societyId === activeTab;
