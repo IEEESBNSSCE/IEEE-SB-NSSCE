@@ -12,21 +12,25 @@ export default function Preloader() {
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
-    let start = 0;
-    const end = 100;
     const duration = 2500; // 2.5 seconds
-    const interval = 20;
-    const step = (end - start) / (duration / interval);
+    const startTime = performance.now();
+    let animationFrame = 0;
+    let lastProgress = -1;
 
-    const timer = setInterval(() => {
-      start += step;
-      if (start >= end) {
-        setProgress(100);
-        clearInterval(timer);
-      } else {
-        setProgress(start);
+    const updateProgress = (now: number) => {
+      const nextProgress = Math.min(100, Math.round(((now - startTime) / duration) * 100));
+
+      if (nextProgress !== lastProgress) {
+        lastProgress = nextProgress;
+        setProgress(nextProgress);
       }
-    }, interval);
+
+      if (nextProgress < 100) {
+        animationFrame = requestAnimationFrame(updateProgress);
+      }
+    };
+
+    animationFrame = requestAnimationFrame(updateProgress);
 
     const fadeTimer = setTimeout(() => {
       setIsLoading(false);
@@ -37,7 +41,7 @@ export default function Preloader() {
     }, 3800);
 
     return () => {
-      clearInterval(timer);
+      cancelAnimationFrame(animationFrame);
       clearTimeout(fadeTimer);
       clearTimeout(unmountTimer);
     };
@@ -70,15 +74,18 @@ export default function Preloader() {
         <motion.div
           animate={
             !isLoading ? {
-              scale: 80,
+              scale: 4,
               opacity: 0,
+              filter: "blur(10px)"
             } : {
               scale: 1,
-              opacity: 1
+              opacity: 1,
+              filter: "blur(0px)"
             }
           }
-          transition={{ duration: 1.2, ease: [0.76, 0, 0.24, 1] }}
+          transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
           className="relative flex flex-col items-center"
+          style={{ willChange: "transform, opacity, filter" }}
         >
           {/* Main Container */}
           <div className="relative inline-block">

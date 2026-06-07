@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Search, Calendar as CalendarIcon, MapPin, ArrowRight } from "lucide-react";
 import Link from "next/link";
@@ -9,6 +9,8 @@ import { societies } from "@/data/societies";
 
 const EventCard = ({ event }: { event: typeof events[0] }) => {
   const society = societies.find(s => s.id === event.societyId);
+  const eventDate = new Date(event.date);
+
   return (
     <motion.div
       layout
@@ -52,7 +54,7 @@ const EventCard = ({ event }: { event: typeof events[0] }) => {
           <div className="space-y-3 mb-6 mt-auto bg-slate-50 border-2 border-black rounded-lg p-4 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
             <div className="flex items-center text-sm text-slate-900 font-bold">
               <CalendarIcon size={18} className="mr-3 text-ieee-blue" />
-              {new Date(event.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
+              {eventDate.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
             </div>
             <div className="flex items-center text-sm text-slate-900 font-bold">
               <MapPin size={18} className="mr-3 text-ieee-blue" />
@@ -77,19 +79,26 @@ export default function EventsPage() {
   const [activeSociety, setActiveSociety] = useState<string>("all");
   const [activeYear, setActiveYear] = useState<string>("all");
 
-  const years = Array.from(new Set(events.map(e => new Date(e.date).getFullYear().toString()))).sort((a, b) => parseInt(b) - parseInt(a));
+  const years = useMemo(
+    () => Array.from(new Set(events.map(e => new Date(e.date).getFullYear().toString()))).sort((a, b) => parseInt(b) - parseInt(a)),
+    []
+  );
 
-  const filteredEvents = events.filter(event => {
-    const matchesSearch = event.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      event.description.toLowerCase().includes(searchQuery.toLowerCase());
-    const matchesSociety = activeSociety === "all" || event.societyId === activeSociety;
-    const matchesYear = activeYear === "all" || new Date(event.date).getFullYear().toString() === activeYear;
-    return matchesSearch && matchesSociety && matchesYear;
-  });
+  const filteredEvents = useMemo(() => {
+    const normalizedSearch = searchQuery.toLowerCase();
 
-  const featuredEvents = filteredEvents.filter(e => e.status === "featured");
-  const upcomingEvents = filteredEvents.filter(e => e.status === "upcoming");
-  const pastEvents = filteredEvents.filter(e => e.status === "past");
+    return events.filter(event => {
+      const matchesSearch = event.title.toLowerCase().includes(normalizedSearch) ||
+        event.description.toLowerCase().includes(normalizedSearch);
+      const matchesSociety = activeSociety === "all" || event.societyId === activeSociety;
+      const matchesYear = activeYear === "all" || new Date(event.date).getFullYear().toString() === activeYear;
+      return matchesSearch && matchesSociety && matchesYear;
+    });
+  }, [activeSociety, activeYear, searchQuery]);
+
+  const featuredEvents = useMemo(() => filteredEvents.filter(e => e.status === "featured"), [filteredEvents]);
+  const upcomingEvents = useMemo(() => filteredEvents.filter(e => e.status === "upcoming"), [filteredEvents]);
+  const pastEvents = useMemo(() => filteredEvents.filter(e => e.status === "past"), [filteredEvents]);
 
 
 

@@ -3,6 +3,7 @@
 import { motion, Variants } from "framer-motion";
 import { societies } from "@/data/societies";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 
 export default function SocietiesPage() {
@@ -104,7 +105,7 @@ export default function SocietiesPage() {
                       {/* Logo Container */}
                       <div className="w-12 h-12 md:w-14 md:h-14 rounded-xl bg-slate-50 border-2 border-black flex items-center justify-center p-2 transition-all duration-300">
                         {society.logo ? (
-                          <img src={society.logo} alt={society.shortName} className="w-full h-full object-contain pointer-events-none" style={{ transform: society.logoRotation }} />
+                          <Image src={society.logo} alt={society.shortName} width={56} height={56} className="w-full h-full object-contain pointer-events-none" style={{ transform: society.logoRotation }} />
                         ) : (
                           <span className={`font-bold text-lg ${society.accentColor.replace('bg-', 'text-')} flex items-center justify-center`}>{society.shortName}</span>
                         )}

@@ -1,18 +1,46 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Search, ChevronLeft, ChevronRight, Pin } from "lucide-react";
 import Image from "next/image";
 import { members } from "@/data/members";
 import { societies } from "@/data/societies";
 
+const CURRENT_TEAM_YEAR = 2026;
+const YEARS = Array.from({ length: CURRENT_TEAM_YEAR - 2018 + 1 }, (_, i) => CURRENT_TEAM_YEAR - i);
 
+const HIDDEN_SOCIETIES_CONFIG: Record<string, number[]> = {
+  mtts: [2023, 2022, 2021, 2020, 2019, 2018],
+  edsoc: [2021, 2020, 2019, 2018],
+  ies: [2020, 2019, 2018],
+  cs: [2019, 2018],
+  ras: [2019, 2018],
+  comsoc: [2019, 2018],
+  ims: [2019, 2018],
+  vts: [2019, 2018],
+  sight: [2019, 2018],
+  pels: [2018]
+};
+
+const TEAM_TABS_CONFIG = [
+  { id: "web-team", name: "Web Team", hiddenYears: [2025, 2024, 2023, 2022, 2021, 2019, 2018] },
+  { id: "media-team", name: "Media Team", hiddenYears: [2025, 2024, 2023, 2022, 2021, 2020, 2019, 2018] },
+  { id: "design-team", name: "Design Team", hiddenYears: [2025, 2024, 2023, 2022, 2021, 2020, 2019, 2018] },
+  { id: "content-team", name: "Content Team", hiddenYears: [2025, 2024, 2023, 2022, 2021, 2018] }
+];
+
+function isTabHiddenForYear(tabId: string, year: number) {
+  const isHiddenTeam = TEAM_TABS_CONFIG.some(t => t.id === tabId && t.hiddenYears.includes(year));
+  const isHiddenSociety = HIDDEN_SOCIETIES_CONFIG[tabId]?.includes(year) ?? false;
+
+  return isHiddenTeam || isHiddenSociety;
+}
 
 export default function TeamPage() {
   const [activeTab, setActiveTab] = useState<string>("execom");
   const [searchQuery, setSearchQuery] = useState("");
-  const [selectedYear, setSelectedYear] = useState<number>(2026);
+  const [selectedYear, setSelectedYear] = useState<number>(CURRENT_TEAM_YEAR);
   const tabsRef = useRef<HTMLDivElement>(null);
 
   const scrollTabs = (direction: 'left' | 'right') => {
@@ -22,63 +50,39 @@ export default function TeamPage() {
     }
   };
 
-  const years = Array.from({ length: 2026 - 2018 + 1 }, (_, i) => 2026 - i);
+  const handleYearChange = (year: number) => {
+    setSelectedYear(year);
 
-  const hiddenSocietiesConfig: Record<string, number[]> = {
-    mtts: [2023, 2022, 2021, 2020, 2019, 2018],
-    edsoc: [2021, 2020, 2019, 2018],
-    ies: [2020, 2019, 2018],
-    cs: [2019, 2018],
-    ras: [2019, 2018],
-    comsoc: [2019, 2018],
-    ims: [2019, 2018],
-    vts: [2019, 2018],
-    sight: [2019, 2018],
-    pels: [2018]
+    if (isTabHiddenForYear(activeTab, year)) {
+      setActiveTab("execom");
+    }
   };
 
-  const hiddenWebTeamYears = [2025, 2024, 2023, 2022, 2021, 2019, 2018];
-  const hiddenMediaTeamYears = [2025, 2024, 2023, 2022, 2021, 2020, 2019, 2018];
-  const hiddenDesignTeamYears = [2025, 2024, 2023, 2022, 2021, 2020, 2019, 2018];
-  const hiddenContentTeamYears = [2025, 2024, 2023, 2022, 2021, 2018];
-
-  const teamTabsConfig = [
-    { id: "web-team", name: "Web Team", hiddenYears: hiddenWebTeamYears },
-    { id: "media-team", name: "Media Team", hiddenYears: hiddenMediaTeamYears },
-    { id: "design-team", name: "Design Team", hiddenYears: hiddenDesignTeamYears },
-    { id: "content-team", name: "Content Team", hiddenYears: hiddenContentTeamYears }
-  ];
-
-  const tabs = [
+  const tabs = useMemo(() => [
     { id: "execom", name: "SB ExeCom" },
     ...societies
       .filter(s => {
-        const hiddenYears = hiddenSocietiesConfig[s.id];
+        const hiddenYears = HIDDEN_SOCIETIES_CONFIG[s.id];
         if (hiddenYears && hiddenYears.includes(selectedYear)) return false;
         return true;
       })
       .map(s => ({ id: s.id, name: s.shortName })),
-    ...teamTabsConfig
+    ...TEAM_TABS_CONFIG
       .filter(t => !t.hiddenYears.includes(selectedYear))
       .map(t => ({ id: t.id, name: t.name }))
-  ];
+  ], [selectedYear]);
 
-  useEffect(() => {
-    const isHiddenTeam = teamTabsConfig.some(t => t.id === activeTab && t.hiddenYears.includes(selectedYear));
-    const isHiddenSociety = hiddenSocietiesConfig[activeTab] && hiddenSocietiesConfig[activeTab].includes(selectedYear);
-    
-    if (isHiddenTeam || isHiddenSociety) {
-      setActiveTab("execom");
-    }
-  }, [selectedYear, activeTab]);
+  const filteredMembers = useMemo(() => {
+    const normalizedSearch = searchQuery.toLowerCase();
 
-  const filteredMembers = members.filter(member => {
+    return members.filter(member => {
     const matchesTab = member.societyId === activeTab;
     const matchesYear = member.year === selectedYear;
-    const matchesSearch = member.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      member.position.toLowerCase().includes(searchQuery.toLowerCase());
+    const matchesSearch = member.name.toLowerCase().includes(normalizedSearch) ||
+      member.position.toLowerCase().includes(normalizedSearch);
     return matchesTab && matchesYear && matchesSearch;
-  });
+    });
+  }, [activeTab, searchQuery, selectedYear]);
 
   return (
     <div className="min-h-screen pt-24 pb-20 bg-slate-50/50">
@@ -106,7 +110,7 @@ export default function TeamPage() {
               <Pin size={32} fill="currentColor" className="drop-shadow-sm rotate-12" />
             </div>
             <p className="text-sm text-black font-bold leading-relaxed italic mb-4 mt-2">
-              "Leadership is not about titles or positions; it's about the actions we take and the impact we make."
+              &quot;Leadership is not about titles or positions; it&apos;s about the actions we take and the impact we make.&quot;
             </p>
             <p className="text-xs text-black font-black text-right">
               - Ramon De la Cruz<br />
@@ -156,10 +160,10 @@ export default function TeamPage() {
             >
               <select
                 value={selectedYear}
-                onChange={(e) => setSelectedYear(Number(e.target.value))}
+                onChange={(e) => handleYearChange(Number(e.target.value))}
                 className="w-full md:w-48 px-4 py-4 rounded-xl bg-white border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] focus:outline-none transition-all text-slate-900 font-bold appearance-none cursor-pointer text-center relative z-10"
               >
-                {years.map(year => (
+                {YEARS.map(year => (
                   <option key={year} value={year}>{year} ExeCom</option>
                 ))}
               </select>

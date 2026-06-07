@@ -33,9 +33,12 @@ export default async function SocietyDetailPage({ params }: { params: Promise<{ 
           <div className="max-w-4xl mx-auto text-center flex flex-col items-center">
             {society.logo ? (
               <div className="w-28 h-28 md:w-32 md:h-32 rounded-xl bg-white flex items-center justify-center mb-8 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] border-[4px] border-black overflow-hidden p-3 md:p-4 hover:-translate-y-1 transition-transform">
-                <img
+                <Image
                   src={society.logo}
                   alt={society.name}
+                  width={128}
+                  height={128}
+                  priority
                   className="w-full h-full object-contain"
                   style={{ transform: society.logoRotation }}
                 />

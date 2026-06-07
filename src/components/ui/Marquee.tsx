@@ -28,7 +28,9 @@ export default function Marquee({
         <motion.div
           key={`marquee-${direction}-150`}
           className="flex whitespace-nowrap gap-6 items-center"
+          initial={{ x: xAnimation[0] }}
           animate={{ x: xAnimation }}
+          style={{ willChange: "transform" }}
           transition={{
             x: {
               repeat: Infinity,

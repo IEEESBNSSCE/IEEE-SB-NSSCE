@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
@@ -25,8 +26,11 @@ export default function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
+      const nextScrolled = window.scrollY > 20;
+      setScrolled((current) => (current === nextScrolled ? current : nextScrolled));
     };
+
+    handleScroll();
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -44,9 +48,12 @@ export default function Navbar() {
           href="/" 
           className="flex items-center z-50 relative transition-transform hover:scale-105"
         >
-          <img 
+          <Image
             src="/logo.png" 
             alt="IEEE SB NSSCE Logo" 
+            width={160}
+            height={32}
+            priority
             className="h-7 md:h-8 w-auto object-contain drop-shadow-sm" 
           />
         </Link>

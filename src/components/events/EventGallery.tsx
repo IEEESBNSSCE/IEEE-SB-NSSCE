@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 
 export default function EventGallery({ images }: { images: string[] }) {
   const [selectedImg, setSelectedImg] = useState<string | null>(null);
@@ -22,9 +23,11 @@ export default function EventGallery({ images }: { images: string[] }) {
             className="relative w-full aspect-video rounded-xl border-2 border-black shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] overflow-hidden group cursor-pointer"
             onClick={() => setSelectedImg(img)}
           >
-            <img 
+            <Image
               src={img} 
               alt={`Event photo ${idx + 1}`} 
+              fill
+              sizes="(max-width: 640px) 100vw, 50vw"
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
             />
           </div>
@@ -46,15 +49,21 @@ export default function EventGallery({ images }: { images: string[] }) {
             >
               <X size={40} strokeWidth={2.5} />
             </button>
-            <motion.img 
+            <motion.div
               initial={{ scale: 0.9 }}
               animate={{ scale: 1 }}
               exit={{ scale: 0.9 }}
-              src={selectedImg} 
-              alt="Full size event photo" 
-              className="max-w-full max-h-[90vh] object-contain border-4 border-black shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] bg-white rounded-xl"
+              className="relative w-full max-w-5xl h-[80vh] border-4 border-black shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] bg-white rounded-xl overflow-hidden"
               onClick={(e) => e.stopPropagation()}
-            />
+            >
+              <Image
+                src={selectedImg}
+                alt="Full size event photo"
+                fill
+                sizes="100vw"
+                className="object-contain"
+              />
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>

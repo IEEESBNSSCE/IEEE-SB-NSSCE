@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useMemo } from "react";
 import { 
   Code, Terminal, Cpu, Database, Monitor,
   Zap, Lightbulb, Battery, Plug, Sun,
@@ -17,13 +17,23 @@ import {
   Car, Navigation, Map,
   Globe, HandHeart, Leaf
 } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 
 interface SocietyBackgroundProps {
   societyId: string;
   accentColor: string;
 }
 
-const themeMap: Record<string, any[]> = {
+type BackgroundElement = {
+  Icon: LucideIcon;
+  size: number;
+  startX: number;
+  startY: number;
+  duration: number;
+  delay: number;
+};
+
+const themeMap: Record<string, LucideIcon[]> = {
   cs: [Code, Terminal, Cpu, Database, Monitor],
   pes: [Zap, Lightbulb, Battery, Plug, Sun],
   ras: [Bot, Settings, Wrench, Cpu, CircuitBoard],
@@ -40,25 +50,35 @@ const themeMap: Record<string, any[]> = {
   sight: [Globe, Heart, HandHeart, Leaf, Users],
 };
 
+function seededValue(seed: string, index: number, salt: number) {
+  let hash = 2166136261;
+  const input = `${seed}-${index}-${salt}`;
+
+  for (let i = 0; i < input.length; i++) {
+    hash ^= input.charCodeAt(i);
+    hash = Math.imul(hash, 16777619);
+  }
+
+  return ((hash >>> 0) % 1000) / 1000;
+}
+
+function createBackgroundElements(societyId: string, icons: LucideIcon[]): BackgroundElement[] {
+  return Array.from({ length: 15 }, (_, i) => ({
+    Icon: icons[i % icons.length],
+    size: seededValue(societyId, i, 1) * 24 + 16,
+    startX: seededValue(societyId, i, 2) * 100,
+    startY: seededValue(societyId, i, 3) * 100,
+    duration: seededValue(societyId, i, 4) * 20 + 20,
+    delay: seededValue(societyId, i, 5) * -20,
+  }));
+}
+
 export default function SocietyBackground({ societyId, accentColor }: SocietyBackgroundProps) {
-  const [mounted, setMounted] = useState(false);
   const icons = themeMap[societyId] || themeMap.cs; // fallback to CS icons if not found
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted) return null;
+  const elements = useMemo(() => createBackgroundElements(societyId, icons), [societyId, icons]);
 
   // Generate an array of 15 floating icon elements
-  const elements = Array.from({ length: 15 }).map((_, i) => {
-    const Icon = icons[i % icons.length];
-    const size = Math.random() * 24 + 16; // 16px to 40px
-    const startX = Math.random() * 100;
-    const startY = Math.random() * 100;
-    const duration = Math.random() * 20 + 20; // 20s to 40s
-    const delay = Math.random() * -20; // random start time
-    
+  const floatingIcons = elements.map(({ Icon, size, startX, startY, duration, delay }, i) => {
     // Choose an animation pattern based on society type (e.g. rising bubbles, floating grid, zig-zag)
     let yAnim = [startY + "vh", (startY - 30) + "vh", startY + "vh"];
     let xAnim = [startX + "vw", (startX + 10) + "vw", startX + "vw"];
@@ -112,7 +132,7 @@ export default function SocietyBackground({ societyId, accentColor }: SocietyBac
       
       {/* Floating Animated Theme Icons */}
       <div className="absolute inset-0 [mask-image:radial-gradient(ellipse_at_center,black,transparent_80%)]">
-        {elements}
+        {floatingIcons}
       </div>
     </div>
   );

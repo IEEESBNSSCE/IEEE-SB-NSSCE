@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { ArrowUpRight, Send } from "lucide-react";
 import { useState } from "react";
-import Image from "next/image";
 import Marquee from "@/components/ui/Marquee";
 
 // Replace this URL with your deployed Google Apps Script Web App URL
@@ -68,7 +67,7 @@ export default function Footer() {
         {/* Massive Call to Action */}
         <div className="mb-20 flex flex-col lg:flex-row items-end justify-between gap-8 border-b-2 border-white/10 pb-12">
           <h2 className="text-5xl md:text-7xl lg:text-[100px] font-heading font-black leading-[0.85] tracking-tighter text-transparent w-full" style={{ WebkitTextStroke: "2px rgba(255,255,255,0.4)" }}>
-            LET'S BUILD <br />
+            LET&apos;S BUILD <br />
             <span className="text-white" style={{ WebkitTextStroke: "0" }}>THE FUTURE</span>
           </h2>
           <a href="https://www.ieee.org" target="_blank" rel="noopener noreferrer" className="bg-ieee-blue p-3 md:p-4 rounded-full border-4 border-black shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] hover:shadow-none hover:translate-x-[4px] hover:translate-y-[4px] transition-all cursor-pointer inline-block self-end mt-4 lg:mt-0">
@@ -172,11 +171,10 @@ export default function Footer() {
              <span className="text-[12vw] font-black whitespace-nowrap tracking-tighter">IEEE SB NSSCE</span>
           </div>
           <p className="text-white/70 font-bold z-10 flex items-center gap-2">
-            Developed by Web Team | <span className="text-accent-cyan animate-pulse">Execom'26</span>
+            Developed by Web Team | <span className="text-accent-cyan animate-pulse">Execom&apos;26</span>
           </p>
         </div>
       </div>
     </footer>
   );
 }
-

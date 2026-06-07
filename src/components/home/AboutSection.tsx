@@ -1,14 +1,15 @@
 "use client";
 
 import { motion, useInView, useSpring, useTransform } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { Users, CalendarCheck, Trophy, Layers } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 
 // Counter component for the animated numbers
-function AnimatedCounter({ value, label, icon: Icon }: { value: number, label: string, icon: any }) {
+function AnimatedCounter({ value, label, icon: Icon }: { value: number, label: string, icon: LucideIcon }) {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-50px" });
-  const [hasAnimated, setHasAnimated] = useState(false);
+  const hasAnimatedRef = useRef(false);
 
   const springValue = useSpring(0, {
     stiffness: 50,
@@ -19,11 +20,11 @@ function AnimatedCounter({ value, label, icon: Icon }: { value: number, label: s
   const displayValue = useTransform(springValue, (current) => Math.round(current));
 
   useEffect(() => {
-    if (isInView && !hasAnimated) {
+    if (isInView && !hasAnimatedRef.current) {
       springValue.set(value);
-      setHasAnimated(true);
+      hasAnimatedRef.current = true;
     }
-  }, [isInView, springValue, value, hasAnimated]);
+  }, [isInView, springValue, value]);
 
   return (
     <motion.div

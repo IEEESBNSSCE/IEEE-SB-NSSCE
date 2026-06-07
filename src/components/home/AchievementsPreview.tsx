@@ -103,7 +103,7 @@ export default function AchievementsPreview() {
             viewport={{ once: true, margin: "-50px" }}
             className="grid grid-cols-1 lg:grid-cols-3 gap-8"
           >
-            {highlights.map((highlight, index) => {
+            {highlights.map((highlight) => {
               const Icon = highlight.icon;
               return (
                 <motion.div key={highlight.id} variants={item} className="relative group h-full outline-none">

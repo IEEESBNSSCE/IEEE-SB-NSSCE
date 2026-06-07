@@ -1,35 +1,18 @@
 "use client";
 
 import { motion, Variants, useMotionValue, useTransform, useSpring } from "framer-motion";
-import { ArrowRight, Calendar, Cpu, Code, Settings, Sparkles, Users, Lightbulb, Globe, Trophy } from "lucide-react";
+import { ArrowRight, Calendar, Cpu, Code, Settings, Users, Trophy } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { MouseEvent as ReactMouseEvent } from "react";
 
 export default function Hero() {
-  const headingLines = ["IEEE Student Branch", "NSSCE"];
-
   const container: Variants = {
     hidden: { opacity: 0 },
     visible: (i = 1) => ({
       opacity: 1,
       transition: { staggerChildren: 0.03, delayChildren: 0.2 * i },
     }),
-  };
-
-  const child: Variants = {
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        type: "spring",
-        damping: 12,
-        stiffness: 200,
-      },
-    },
-    hidden: {
-      opacity: 0,
-      y: 40,
-    },
   };
 
   // Background Mouse Tracking
@@ -279,9 +262,13 @@ export default function Hero() {
             </motion.div>
           </motion.div>
 
-          <img
+          <Image
             src="https://sb-dataset.vercel.app/hero/NSS.png"
             alt="NSSCE Campus"
+            width={1400}
+            height={760}
+            priority
+            sizes="100vw"
             className="relative w-full h-auto max-h-[48vh] md:max-h-[52vh] object-contain object-bottom drop-shadow-2xl scale-110 md:scale-[1.15] origin-bottom [mask-image:linear-gradient(to_bottom,black_97%,transparent_100%)] z-10 pointer-events-none"
           />
         </motion.div>

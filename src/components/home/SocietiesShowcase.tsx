@@ -3,18 +3,32 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { societies } from "@/data/societies";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, Pin } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useMemo, useRef, useState } from "react";
+import type { MouseEvent, PointerEvent } from "react";
+import type { Society } from "@/data/types";
+
+type ViewAllNode = {
+  id: "view-all";
+  name: string;
+  shortName: string;
+  isViewAll: true;
+  slug: string;
+  accentColor?: string;
+  logo?: string;
+  logoRotation?: string;
+  description?: string;
+};
+
+type SocietyNode = (Society & { isViewAll?: false }) | ViewAllNode;
 
 export default function SocietiesShowcase() {
-  const [activeNode, setActiveNode] = useState<any>(null);
-  const [isTouchDevice, setIsTouchDevice] = useState(false);
+  const [activeNode, setActiveNode] = useState<SocietyNode | null>(null);
+  const [hasTouchInteraction, setHasTouchInteraction] = useState(false);
+  const touchInteractionRef = useRef(false);
 
-  useEffect(() => {
-    setIsTouchDevice('ontouchstart' in window || navigator.maxTouchPoints > 0);
-  }, []);
-
-  const nodes = [
+  const nodes = useMemo<SocietyNode[]>(() => [
     ...societies,
     { 
       id: 'view-all', 
@@ -23,19 +37,26 @@ export default function SocietiesShowcase() {
       isViewAll: true, 
       slug: '' 
     }
-  ];
+  ], []);
 
-  const innerNodes = nodes.filter((_, i) => i % 2 === 0);
-  const outerNodes = nodes.filter((_, i) => i % 2 !== 0);
+  const innerNodes = useMemo(() => nodes.filter((_, i) => i % 2 === 0), [nodes]);
+  const outerNodes = useMemo(() => nodes.filter((_, i) => i % 2 !== 0), [nodes]);
 
-  const handleNodeClick = (e: React.MouseEvent, node: any) => {
-    if (isTouchDevice && activeNode?.id !== node.id) {
+  const handlePointerDown = (e: PointerEvent<HTMLAnchorElement>) => {
+    if (e.pointerType === "touch") {
+      touchInteractionRef.current = true;
+      setHasTouchInteraction(true);
+    }
+  };
+
+  const handleNodeClick = (e: MouseEvent<HTMLAnchorElement>, node: SocietyNode) => {
+    if (touchInteractionRef.current && activeNode?.id !== node.id) {
       e.preventDefault();
       setActiveNode(node);
     }
   };
 
-  const renderNodes = (nodeList: any[], isInner: boolean) => {
+  const renderNodes = (nodeList: SocietyNode[], isInner: boolean) => {
     return nodeList.map((node, i) => {
       const angle = (i / nodeList.length) * 360;
       const radiusVar = isInner ? 'var(--orbit-radius-inner)' : 'var(--orbit-radius-outer)';
@@ -55,11 +76,12 @@ export default function SocietiesShowcase() {
                <div 
                  style={{ transform: `rotate(${-angle}deg)` }}
                  className="w-12 h-12 md:w-16 md:h-16 -ml-6 -mt-6 md:-ml-8 md:-mt-8 pointer-events-auto"
-                 onMouseEnter={() => !isTouchDevice && setActiveNode(node)}
-                 onMouseLeave={() => !isTouchDevice && setActiveNode(null)}
+                 onMouseEnter={() => !touchInteractionRef.current && setActiveNode(node)}
+                 onMouseLeave={() => !touchInteractionRef.current && setActiveNode(null)}
                >
                  <Link 
                    href={node.isViewAll ? "/societies" : `/societies/${node.slug}`} 
+                   onPointerDown={handlePointerDown}
                    onClick={(e) => handleNodeClick(e, node)}
                    className="block w-full h-full outline-none focus:ring-2 focus:ring-ieee-blue rounded-full touch-pan-y"
                  >
@@ -74,7 +96,7 @@ export default function SocietiesShowcase() {
                      {node.isViewAll ? (
                        <ArrowRight size={24} className="group-hover:translate-x-1 transition-transform md:w-6 md:h-6 stroke-[3px]" />
                      ) : node.logo ? (
-                       <img src={node.logo} alt={node.shortName} draggable={false} style={{ transform: node.logoRotation }} className="w-8 h-8 md:w-10 md:h-10 object-contain z-10 pointer-events-none" />
+                       <Image src={node.logo} alt={node.shortName} width={40} height={40} draggable={false} style={{ transform: node.logoRotation }} className="w-8 h-8 md:w-10 md:h-10 object-contain z-10 pointer-events-none" />
                      ) : (
                        <span className="font-black text-[11px] md:text-base tracking-wider z-10">{node.shortName}</span>
                      )}
@@ -112,7 +134,7 @@ export default function SocietiesShowcase() {
           </div>
           <h3 className="font-heading font-black text-lg text-black mb-2 mt-2">IEEE Vision</h3>
           <p className="text-sm text-black font-bold leading-relaxed italic">
-            "IEEE will be essential to the global technical community... and be universally recognized for the contributions of technology in improving global conditions."
+            {'"IEEE will be essential to the global technical community... and be universally recognized for the contributions of technology in improving global conditions."'}
           </p>
         </motion.div>
       </motion.div>
@@ -136,7 +158,7 @@ export default function SocietiesShowcase() {
           </div>
           <h3 className="font-heading font-black text-lg text-black mb-2 mt-2">IEEE Mission</h3>
           <p className="text-sm text-black font-bold leading-relaxed italic">
-            "IEEE's core purpose is to foster technological innovation and excellence for the benefit of humanity."
+            {'"IEEE\'s core purpose is to foster technological innovation and excellence for the benefit of humanity."'}
           </p>
         </motion.div>
       </motion.div>
@@ -253,7 +275,7 @@ export default function SocietiesShowcase() {
                      <>
                        {activeNode.logo ? (
                          <div className="w-12 h-12 md:w-16 md:h-16 rounded-xl flex items-center justify-center mb-1 md:mb-2 bg-white p-2 border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
-                           <img src={activeNode.logo} alt={activeNode.shortName} style={{ transform: activeNode.logoRotation }} className="w-full h-full object-contain pointer-events-none" />
+                           <Image src={activeNode.logo} alt={activeNode.shortName} width={64} height={64} style={{ transform: activeNode.logoRotation }} className="w-full h-full object-contain pointer-events-none" />
                          </div>
                        ) : (
                          <div className={`w-8 h-8 md:w-12 md:h-12 rounded-xl flex items-center justify-center text-white font-black mb-1 md:mb-2 border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] text-[10px] md:text-base ${activeNode.accentColor}`}>
@@ -264,7 +286,7 @@ export default function SocietiesShowcase() {
                        <p className="text-[9px] md:text-xs text-slate-600 line-clamp-3 md:line-clamp-4 px-1 leading-snug">
                          {activeNode.description}
                        </p>
-                       {isTouchDevice && (
+                       {hasTouchInteraction && (
                          <p className="text-[8px] text-ieee-blue mt-1 font-bold tracking-wider">TAP TO VISIT</p>
                        )}
                      </>
@@ -283,7 +305,7 @@ export default function SocietiesShowcase() {
                    </div>
                    <h3 className="font-black text-slate-900 text-xs md:text-xl">IEEE Societies</h3>
                    <p className="text-[8px] md:text-sm text-slate-600 mt-1 uppercase tracking-widest font-bold">
-                     {isTouchDevice ? 'Tap icons to explore' : 'Hover to explore'}
+                     {hasTouchInteraction ? 'Tap icons to explore' : 'Hover to explore'}
                    </p>
                 </motion.div>
               )}

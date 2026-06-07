@@ -2,17 +2,23 @@
 
 import { motion, useScroll, useTransform, useAnimation } from "framer-motion";
 import { Rocket } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function ScrollProgressRocket() {
   const { scrollYProgress } = useScroll();
   const controls = useAnimation();
   const [isVisible, setIsVisible] = useState(false);
+  const isVisibleRef = useRef(false);
 
   // Show the rocket only after scrolling down 5% of the page
   useEffect(() => {
     return scrollYProgress.on("change", (latest) => {
-      setIsVisible(latest > 0.05);
+      const nextIsVisible = latest > 0.05;
+
+      if (isVisibleRef.current !== nextIsVisible) {
+        isVisibleRef.current = nextIsVisible;
+        setIsVisible(nextIsVisible);
+      }
     });
   }, [scrollYProgress]);
 

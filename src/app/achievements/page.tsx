@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import { achievements } from "@/data/achievements";
 import { societies } from "@/data/societies";
@@ -24,13 +24,16 @@ export default function AchievementsPage() {
   };
 
   // Get unique years sorted descending
-  const years = Array.from(new Set(achievements.map(a => a.year))).sort((a, b) => b - a);
+  const years = useMemo(() => Array.from(new Set(achievements.map(a => a.year))).sort((a, b) => b - a), []);
 
-  const filteredAchievements = activeYear === "all"
-    ? achievements.sort((a, b) => b.year - a.year)
-    : achievements.filter(a => a.year === activeYear);
+  const filteredAchievements = useMemo(() => activeYear === "all"
+    ? [...achievements].sort((a, b) => b.year - a.year)
+    : achievements.filter(a => a.year === activeYear), [activeYear]);
 
-  const visibleAchievements = filteredAchievements.slice(0, visibleCount);
+  const visibleAchievements = useMemo(
+    () => filteredAchievements.slice(0, visibleCount),
+    [filteredAchievements, visibleCount]
+  );
 
   return (
     <div className="min-h-screen pt-24 pb-20 bg-slate-50/50">

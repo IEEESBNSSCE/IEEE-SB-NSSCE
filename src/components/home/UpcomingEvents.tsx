@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import { events } from "@/data/events";
 import { Calendar as CalendarIcon, MapPin, ArrowUpRight } from "lucide-react";
 import Link from "next/link";
-import Image from "next/image";
 
 export default function UpcomingEvents() {
   const upcomingEvents = events.filter(e => e.status === "upcoming" || e.status === "featured").slice(0, 3);
@@ -51,7 +50,10 @@ export default function UpcomingEvents() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {upcomingEvents.map((event, index) => (
+          {upcomingEvents.map((event, index) => {
+            const eventDate = new Date(event.date);
+
+            return (
             <motion.div
               key={event.id}
               initial={{ opacity: 0, y: 30 }}
@@ -88,9 +90,9 @@ export default function UpcomingEvents() {
                   <div className="space-y-3 mb-6 mt-auto bg-slate-50 border-2 border-black rounded-lg p-4 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
                     <div className="flex items-center text-sm text-slate-900 font-bold">
                       <CalendarIcon size={18} className="mr-3 text-ieee-blue" />
-                      {new Date(event.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+                      {eventDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
                       {' • '}
-                      {new Date(event.date).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' })}
+                      {eventDate.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' })}
                     </div>
                     <div className="flex items-center text-sm text-slate-900 font-bold">
                       <MapPin size={18} className="mr-3 text-ieee-blue" />
@@ -116,7 +118,8 @@ export default function UpcomingEvents() {
                 </div>
               </Link>
             </motion.div>
-          ))}
+            );
+          })}
 
           {upcomingEvents.length === 0 && (
             <div className="col-span-full py-12 text-center text-muted-foreground border-2 border-dashed border-pale-silver rounded-2xl">
