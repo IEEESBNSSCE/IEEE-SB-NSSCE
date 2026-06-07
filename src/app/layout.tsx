@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Space_Grotesk } from "next/font/google";
 import "./globals.css";
-import LenisWrapper from "@/components/layout/LenisWrapper";
+
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 
@@ -37,13 +37,10 @@ export default function RootLayout({
         <Preloader />
 
         <ScrollProgressRocket />
-        <LenisWrapper>
-          <Navbar />
-          <main className="flex-1">{children}</main>
-          <Footer />
-        </LenisWrapper>
+        <Navbar />
+        <main className="flex-1">{children}</main>
+        <Footer />
       </body>
     </html>
   );
 }
-

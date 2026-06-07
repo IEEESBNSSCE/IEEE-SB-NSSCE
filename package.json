@@ -1,6 +1,7 @@
 {
-  "name": "temp-app",
-  "version": "0.1.0",
+  "name": "ieee-sb-nssce-website",
+  "version": "1.0.0",
+  "description": "Official Website for IEEE Student Branch NSSCE",
   "private": true,
   "scripts": {
     "dev": "next dev -H 0.0.0.0",

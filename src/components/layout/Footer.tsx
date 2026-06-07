@@ -71,8 +71,8 @@ export default function Footer() {
             LET'S BUILD <br />
             <span className="text-white" style={{ WebkitTextStroke: "0" }}>THE FUTURE</span>
           </h2>
-          <a href="https://www.ieee.org" target="_blank" rel="noopener noreferrer" className="bg-ieee-blue p-4 rounded-full border-4 border-black shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] hover:shadow-none hover:translate-x-[4px] hover:translate-y-[4px] transition-all cursor-pointer block">
-             <ArrowUpRight size={48} className="text-white stroke-[3px]" />
+          <a href="https://www.ieee.org" target="_blank" rel="noopener noreferrer" className="bg-ieee-blue p-3 md:p-4 rounded-full border-4 border-black shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] hover:shadow-none hover:translate-x-[4px] hover:translate-y-[4px] transition-all cursor-pointer inline-block self-end mt-4 lg:mt-0">
+             <ArrowUpRight className="w-8 h-8 md:w-12 md:h-12 text-white stroke-[3px]" />
           </a>
         </div>
 
@@ -166,7 +166,7 @@ export default function Footer() {
         {/* Bottom Bar with huge text watermark */}
         <div className="border-t-2 border-white/10 pt-10 pb-6 relative flex flex-col md:flex-row items-center justify-between gap-6 overflow-hidden rounded-xl bg-white/5 px-8">
           <p className="text-white/70 font-bold z-10 flex items-center gap-2">
-            © {new Date().getFullYear()} <span className="text-[#FFD700]">IEEE SB NSSCE</span>.
+            © {new Date().getFullYear()} <span className="text-[#FFD700]">IEEE SB NSSCE</span>
           </p>
           <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 opacity-[0.03] pointer-events-none w-full overflow-hidden text-center flex justify-center">
              <span className="text-[12vw] font-black whitespace-nowrap tracking-tighter">IEEE SB NSSCE</span>

@@ -149,7 +149,7 @@ export default function Hero() {
         <div className="bg-[#FF90E8] border-4 border-black p-4 rounded-2xl shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transform rotate-1 hover:rotate-0 hover:-translate-y-1 transition-all duration-300 flex items-center justify-between group cursor-default">
            <div>
              <h4 className="font-black text-3xl font-heading leading-none text-black">80+</h4>
-             <p className="font-bold text-black/80 text-[10px] uppercase tracking-wider mt-1.5">Awards Won</p>
+             <p className="font-bold text-black/80 text-[10px] uppercase tracking-wider mt-1.5">Awards & Recog.</p>
            </div>
            <div className="bg-white p-2.5 rounded-full border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] group-hover:rotate-12 transition-transform">
              <Trophy size={22} className="text-black" strokeWidth={2.5} />
@@ -349,7 +349,7 @@ export default function Hero() {
         </motion.div>
       </div>
 
-      {/* Floating Engineering Elements (Background) Parallax tracking */}
+      {/* Floating Parallax tracking */}
       <motion.div
         style={{ x: floatX1, y: floatY1 }}
         className="absolute left-[15%] top-[15%] text-sky-200/40 -z-10 pointer-events-none"
