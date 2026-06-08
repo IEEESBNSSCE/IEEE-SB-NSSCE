@@ -4,7 +4,10 @@ import { useState, useRef, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Search, ChevronLeft, ChevronRight, Pin } from "lucide-react";
 import Image from "next/image";
+import dynamic from "next/dynamic";
 import { members } from "@/data/members";
+
+const Lanyard = dynamic(() => import("@/components/ui/Lanyard"), { ssr: false });
 import { societies } from "@/data/societies";
 
 const CURRENT_TEAM_YEAR = 2026;
@@ -76,11 +79,11 @@ export default function TeamPage() {
     const normalizedSearch = searchQuery.toLowerCase();
 
     return members.filter(member => {
-    const matchesTab = member.societyId === activeTab;
-    const matchesYear = member.year === selectedYear;
-    const matchesSearch = member.name.toLowerCase().includes(normalizedSearch) ||
-      member.position.toLowerCase().includes(normalizedSearch);
-    return matchesTab && matchesYear && matchesSearch;
+      const matchesTab = member.societyId === activeTab;
+      const matchesYear = member.year === selectedYear;
+      const matchesSearch = member.name.toLowerCase().includes(normalizedSearch) ||
+        member.position.toLowerCase().includes(normalizedSearch);
+      return matchesTab && matchesYear && matchesSearch;
     });
   }, [activeTab, searchQuery, selectedYear]);
 
@@ -90,6 +93,11 @@ export default function TeamPage() {
       <section className="py-20 relative overflow-hidden">
         <div className="absolute inset-0 z-0 flex items-center justify-center pointer-events-none opacity-50">
           <div className="w-[800px] h-[800px] bg-ieee-blue/5 rounded-full blur-[100px]" />
+        </div>
+
+        {/* Lanyard Component */}
+        <div className="absolute top-0 left-4 md:left-10 w-[200px] md:w-[350px] h-[400px] md:h-[500px] z-30 pointer-events-auto hidden lg:block">
+          <Lanyard position={[0, 0, 20]} gravity={[0, -40, 0]} />
         </div>
 
         {/* Sticky Note Quote (Desktop only) */}
@@ -110,7 +118,7 @@ export default function TeamPage() {
               <Pin size={32} fill="currentColor" className="drop-shadow-sm rotate-12" />
             </div>
             <p className="text-sm text-black font-bold leading-relaxed italic mb-4 mt-2">
-              &quot;Leadership is not about titles or positions; it&apos;s about the actions we take and the impact we make.&quot;
+              {"\"Leadership is not about titles or positions; it's about the actions we take and the impact we make.\""}
             </p>
             <p className="text-xs text-black font-black text-right">
               - Ramon De la Cruz<br />
@@ -127,7 +135,7 @@ export default function TeamPage() {
           >
             Meet the <span className="relative inline-block"><span className="relative z-10 text-white">Team</span><span className="absolute -bottom-1 left-0 w-full h-full bg-ieee-blue -z-0 -rotate-2 border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]" /></span>
           </motion.h1>
-          
+
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -136,7 +144,7 @@ export default function TeamPage() {
           >
             <div className="absolute inset-0 bg-[#FFD700] translate-x-1.5 translate-y-1.5 rounded-2xl pointer-events-none border-2 border-black" />
             <div className="absolute inset-0 bg-[#FFA000] translate-x-3 translate-y-3 rounded-2xl pointer-events-none border-2 border-black" />
-            
+
             <div className="relative bg-white border-2 border-black p-5 md:p-8 rounded-2xl z-10 shadow-sm text-center">
               <p className="text-lg md:text-xl text-slate-800 font-medium leading-relaxed">
                 The dedicated individuals working tirelessly to build a strong community of innovators and leaders.
@@ -220,8 +228,8 @@ export default function TeamPage() {
                       key={tab.id}
                       onClick={() => setActiveTab(tab.id)}
                       className={`relative px-6 py-2.5 rounded-xl text-sm font-bold whitespace-nowrap transition-all border-2 border-black ${isActive
-                          ? "bg-[#FFD700] text-black translate-x-[2px] translate-y-[2px] shadow-none"
-                          : "bg-white text-slate-800 hover:bg-slate-100 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
+                        ? "bg-[#FFD700] text-black translate-x-[2px] translate-y-[2px] shadow-none"
+                        : "bg-white text-slate-800 hover:bg-slate-100 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
                         }`}
                     >
                       <span className="relative z-10">{tab.name}</span>
@@ -263,10 +271,10 @@ export default function TeamPage() {
               >
                 {/* Interactive Shadow Base */}
                 <div className="absolute inset-0 bg-ieee-blue translate-x-2 translate-y-2 rounded-xl pointer-events-none transition-transform duration-300 group-hover:translate-x-0 group-hover:translate-y-0" />
-                
+
                 {/* Main Card */}
                 <div className="relative h-full w-full bg-white border-2 border-black p-4 md:p-5 rounded-xl z-10 flex flex-col items-center text-center transition-transform duration-300 transform group-hover:translate-x-1 group-hover:translate-y-1">
-                  
+
                   {/* Photo Container (Square Polaroid style) */}
                   <div className="relative w-full aspect-square rounded-lg border-2 border-black bg-slate-50 overflow-hidden mb-5 flex items-center justify-center text-5xl text-slate-300 font-bold shadow-inner">
                     {member.photo ? (
@@ -287,7 +295,7 @@ export default function TeamPage() {
                     <h3 className="font-heading font-black text-xl mb-4 text-slate-900 leading-tight">
                       {member.name}
                     </h3>
-                    
+
                     {/* Position Badge */}
                     <div className="w-full px-3 py-2 rounded-xl text-[10px] sm:text-xs font-bold uppercase tracking-widest text-slate-900 bg-[#FFD700] border-2 border-black text-center shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] leading-tight">
                       {member.position}

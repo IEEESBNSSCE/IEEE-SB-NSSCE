@@ -52,9 +52,9 @@ function AnimatedCounter({ value, label, icon: Icon }: { value: number, label: s
 
 export default function AboutSection() {
   const stats = [
-    { value: 500, label: "Active Members", icon: Users },
+    { value: 150, label: "Active Members", icon: Users },
     { value: 120, label: "Events Conducted", icon: CalendarCheck },
-    { value: 45, label: "Awards Won", icon: Trophy },
+    { value: 80, label: "Awards & Recognitions", icon: Trophy },
     { value: 13, label: "IEEE Societies", icon: Layers },
   ];
 
