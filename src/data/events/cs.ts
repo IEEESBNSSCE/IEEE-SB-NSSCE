@@ -142,6 +142,10 @@ export const csEvents: Event[] = [
     tags: ["Coding","Leetcode"],
     gallery: [
       "https://sb-dataset.vercel.app/events/cs/e8/1.jpeg"
+    ],
+    contacts: [
+      { name: "Ardra", phone: "+917306226029" },
+      { name: "Athul", phone: "+919400834994" }
     ]
   },
 ];

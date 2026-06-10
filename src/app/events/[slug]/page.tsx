@@ -156,24 +156,29 @@ export default async function EventDetailPage({ params }: { params: Promise<{ sl
                 </p>
 
                 <div className="space-y-4 mb-8">
-                  <div className="flex justify-between pb-4 border-b-2 border-black border-dashed">
-                    <span className="text-slate-600 font-bold uppercase tracking-wider text-sm">Price</span>
-                    <span className="font-black text-slate-900">{event.price || "Free"}</span>
+                  <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2 sm:gap-4 pb-4 border-b-2 border-black border-dashed">
+                    <span className="text-slate-600 font-bold uppercase tracking-wider text-sm shrink-0 mt-0.5">Price</span>
+                    <span className="font-black text-slate-900 sm:text-right">{event.price || "Free"}</span>
                   </div>
-                  <div className="flex justify-between pb-4 border-b-2 border-black border-dashed">
-                    <span className="text-slate-600 font-bold uppercase tracking-wider text-sm">Location</span>
-                    <span className="font-black text-slate-900 text-right">{event.venue}</span>
+                  <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2 sm:gap-4 pb-4 border-b-2 border-black border-dashed">
+                    <span className="text-slate-600 font-bold uppercase tracking-wider text-sm shrink-0 mt-0.5">Location</span>
+                    <span className="font-black text-slate-900 sm:text-right">{event.venue}</span>
                   </div>
                 </div>
 
-                {!isPast ? (
-                  <button className="w-full py-4 bg-ieee-blue text-white rounded-xl font-black uppercase tracking-widest border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all flex items-center justify-center gap-2 group">
+                {!isPast && event.registrationUrl ? (
+                  <a 
+                    href={event.registrationUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full py-4 bg-ieee-blue text-white rounded-xl font-black uppercase tracking-widest border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all flex items-center justify-center gap-2 group"
+                  >
                     Register Now
                     <ArrowRight size={20} className="stroke-[3px]" />
-                  </button>
+                  </a>
                 ) : (
-                  <button className="w-full py-4 bg-slate-200 text-slate-500 rounded-xl font-black uppercase tracking-widest border-2 border-slate-400 cursor-not-allowed">
-                    Event Ended
+                  <button disabled className="w-full py-4 bg-slate-200 text-slate-500 rounded-xl font-black uppercase tracking-widest border-2 border-slate-400 cursor-not-allowed">
+                    {isPast ? "Event Ended" : "Registrations Closed"}
                   </button>
                 )}
               </div>
