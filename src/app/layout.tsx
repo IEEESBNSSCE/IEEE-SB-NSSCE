@@ -19,8 +19,53 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: "IEEE Student Branch NSSCE",
-  description: "Official Website of IEEE Student Branch NSSCE",
+  title: {
+    default: "IEEE SB NSSCE | Innovating Since 1987",
+    template: "%s | IEEE SB NSSCE",
+  },
+  description: "Official Website of IEEE Student Branch NSS College of Engineering, Palakkad. Discover our events, societies, achievements, and join a community of innovators.",
+  keywords: ["IEEE", "NSSCE", "IEEE SB NSSCE", "NSS College of Engineering", "Palakkad", "Engineering", "Technology", "Student Branch", "Kerala Section", "IEEE Kerala"],
+  authors: [{ name: "IEEE SB NSSCE Web Team" }],
+  creator: "IEEE SB NSSCE",
+  publisher: "IEEE SB NSSCE",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  openGraph: {
+    type: "website",
+    locale: "en_IN",
+    url: "https://ieeesbnssce.in",
+    title: "IEEE SB NSSCE | Innovating Since 1987",
+    description: "Official Website of IEEE Student Branch NSS College of Engineering, Palakkad. Empowering students to innovate, collaborate, and lead.",
+    siteName: "IEEE SB NSSCE",
+    images: [
+      {
+        url: "/logo.png",
+        width: 1200,
+        height: 630,
+        alt: "IEEE SB NSSCE Logo",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "IEEE SB NSSCE | Innovating Since 1987",
+    description: "Official Website of IEEE Student Branch NSS College of Engineering, Palakkad.",
+    images: ["/logo.png"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
 };
 
 export default function RootLayout({
