@@ -7,6 +7,8 @@ import Image from "next/image";
 import dynamic from "next/dynamic";
 import { members } from "@/data/members";
 
+import { societies } from "@/data/societies";
+
 const Lanyard = dynamic(() => import("@/components/ui/Lanyard"), { 
   ssr: false,
   loading: () => (
@@ -15,7 +17,6 @@ const Lanyard = dynamic(() => import("@/components/ui/Lanyard"), {
     </div>
   )
 });
-import { societies } from "@/data/societies";
 
 const CURRENT_TEAM_YEAR = 2026;
 const YEARS = Array.from({ length: CURRENT_TEAM_YEAR - 2018 + 1 }, (_, i) => CURRENT_TEAM_YEAR - i);
@@ -34,6 +35,7 @@ const HIDDEN_SOCIETIES_CONFIG: Record<string, number[]> = {
 };
 
 const TEAM_TABS_CONFIG = [
+  { id: "mentor-panel", name: "Mentor Panel", hiddenYears: [2025, 2024, 2023, 2022, 2021, 2020, 2019, 2018] },
   { id: "web-team", name: "Web Team", hiddenYears: [2025, 2024, 2023, 2022, 2021, 2019, 2018] },
   { id: "media-team", name: "Media Team", hiddenYears: [2025, 2024, 2023, 2022, 2021, 2020, 2019, 2018] },
   { id: "design-team", name: "Design Team", hiddenYears: [2025, 2024, 2023, 2022, 2021, 2020, 2019, 2018] },
@@ -68,19 +70,28 @@ export default function TeamPage() {
     }
   };
 
-  const tabs = useMemo(() => [
-    { id: "execom", name: "SB ExeCom" },
-    ...societies
-      .filter(s => {
-        const hiddenYears = HIDDEN_SOCIETIES_CONFIG[s.id];
-        if (hiddenYears && hiddenYears.includes(selectedYear)) return false;
-        return true;
-      })
-      .map(s => ({ id: s.id, name: s.shortName })),
-    ...TEAM_TABS_CONFIG
-      .filter(t => !t.hiddenYears.includes(selectedYear))
-      .map(t => ({ id: t.id, name: t.name }))
-  ], [selectedYear]);
+  const tabs = useMemo(() => {
+    const baseTabs = [{ id: "execom", name: "SB ExeCom" }];
+    
+    const mentorPanel = TEAM_TABS_CONFIG.find(t => t.id === "mentor-panel");
+    if (mentorPanel && !mentorPanel.hiddenYears.includes(selectedYear)) {
+      baseTabs.push({ id: mentorPanel.id, name: mentorPanel.name });
+    }
+
+    return [
+      ...baseTabs,
+      ...societies
+        .filter(s => {
+          const hiddenYears = HIDDEN_SOCIETIES_CONFIG[s.id];
+          if (hiddenYears && hiddenYears.includes(selectedYear)) return false;
+          return true;
+        })
+        .map(s => ({ id: s.id, name: s.shortName })),
+      ...TEAM_TABS_CONFIG
+        .filter(t => t.id !== "mentor-panel" && !t.hiddenYears.includes(selectedYear))
+        .map(t => ({ id: t.id, name: t.name }))
+    ];
+  }, [selectedYear]);
 
   const filteredMembers = useMemo(() => {
     const normalizedSearch = searchQuery.toLowerCase();
