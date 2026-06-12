@@ -192,6 +192,22 @@ export const members: Member[] = [
   },
   {
     id: "26mp3",
+    name: "Adithya C",
+    position: "Mentor",
+    societyId: "mentor-panel",
+    year: 2026,
+    photo: "https://sb-dataset.vercel.app/team/2025/SB/Adithya.jpg",
+  },
+  {
+    id: "26mp4",
+    name: "Abhijith M",
+    position: "Mentor",
+    societyId: "mentor-panel",
+    year: 2026,
+    photo: "https://sb-dataset.vercel.app/team/2026/CS/abhijith.png",
+  },
+  {
+    id: "26mp5",
     name: "Athul Prasad",
     position: "Mentor",
     societyId: "mentor-panel",
@@ -199,7 +215,7 @@ export const members: Member[] = [
     photo: "https://sb-dataset.vercel.app/team/2026/MENTOR/AthulPrasad.jpg",
   },
   {
-    id: "26mp4",
+    id: "26mp6",
     name: "Madhav H Nair",
     position: "Mentor",
     societyId: "mentor-panel",
@@ -207,7 +223,7 @@ export const members: Member[] = [
     photo: "https://sb-dataset.vercel.app/team/2026/MENTOR/Madhav.jpg",
   },
   {
-    id: "26mp5",
+    id: "26mp7",
     name: "Rakesh Ravi",
     position: "Mentor",
     societyId: "mentor-panel",
@@ -215,7 +231,7 @@ export const members: Member[] = [
     photo: "https://sb-dataset.vercel.app/team/2026/MENTOR/RakeshRavi.jpg",
   },
   {
-    id: "26mp6",
+    id: "26mp8",
     name: "Surabhi Rajesh",
     position: "Mentor",
     societyId: "mentor-panel",
@@ -223,7 +239,7 @@ export const members: Member[] = [
     photo: "https://sb-dataset.vercel.app/team/2026/MENTOR/SurabhiRajesh.jpg",
   },
   {
-    id: "26mp7",
+    id: "26mp9",
     name: "Tanya Sanjeev Nair",
     position: "Mentor",
     societyId: "mentor-panel",
@@ -231,7 +247,7 @@ export const members: Member[] = [
     photo: "https://sb-dataset.vercel.app/team/2026/MENTOR/TanyaSanjeevNair.jpg",
   },
   {
-    id: "26mp8",
+    id: "26mp10",
     name: "Abhishek K M",
     position: "Mentor",
     societyId: "mentor-panel",
@@ -239,7 +255,7 @@ export const members: Member[] = [
     photo: "https://sb-dataset.vercel.app/team/2026/MENTOR/AbhishekKM.jpg",
   },
   {
-    id: "26mp9",
+    id: "26mp11",
     name: "Anandu",
     position: "Mentor",
     societyId: "mentor-panel",
@@ -247,7 +263,7 @@ export const members: Member[] = [
     photo: "https://sb-dataset.vercel.app/team/2026/MENTOR/Anandu.jpg",
   },
   {
-    id: "26mp10",
+    id: "26mp12",
     name: "Sarath S",
     position: "Mentor",
     societyId: "mentor-panel",
