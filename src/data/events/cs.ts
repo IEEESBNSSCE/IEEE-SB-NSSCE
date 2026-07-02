@@ -148,4 +148,34 @@ export const csEvents: Event[] = [
       { name: "Athul", phone: "+919400834994" }
     ]
   },
+  {
+    id: "cs-e9",
+    slug: "informatyka-6_0",
+    title: "Campus to Corporate – Building Skills for Industry Success : Online Talk Session",
+    description: "IEEE CS SBC NSSCE , in collaboration with IEEE Computer Society Kerala Chapter & IEEE Young Professionals Kerala Section , presents a session under the Informatyka 6.0 initiative.",
+    date: "2026-07-04T09:00:00Z",
+    time: "7:00–8:00 PM",
+    venue: "G Meet",
+    price: "Free for all",
+    societyId: "cs", 
+    status: "upcoming",
+    registrationUrl: "https://kutti.link/ErWkOD",
+    banner: "https://sb-dataset.vercel.app/events/cs/e9/1.jpeg",
+    tags: ["Talk Session","Placement","Career"],
+    gallery: [
+      "https://sb-dataset.vercel.app/events/cs/e9/1.jpeg"
+    ],
+    contacts: [
+      { name: "Ardra", phone: "+917306226029" },
+      { name: "Parvathy", phone: "+919207897197" }
+    ],
+    speakers: [
+      {
+        name: "Surabhi Rajesh",
+        designation: "Traction Software Validation Engineer, Alstom",
+        bio: "Surabhi Rajesh is an active mentor of IEEE SB NSSCE and Traction Software Validation Engineer at Alstom",
+        photo: "https://sb-dataset.vercel.app/team/2026/MENTOR/SurabhiRajesh.jpg"
+      }
+    ]
+  }
 ];
