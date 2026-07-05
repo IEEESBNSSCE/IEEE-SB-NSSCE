@@ -158,7 +158,7 @@ export const csEvents: Event[] = [
     venue: "G Meet",
     price: "Free for all",
     societyId: "cs", 
-    status: "upcoming",
+    status: "past",
     registrationUrl: "https://kutti.link/ErWkOD",
     banner: "https://sb-dataset.vercel.app/events/cs/e9/1.jpeg",
     tags: ["Talk Session","Placement","Career"],
