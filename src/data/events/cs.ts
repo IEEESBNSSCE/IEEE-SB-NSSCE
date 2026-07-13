@@ -177,5 +177,27 @@ export const csEvents: Event[] = [
         photo: "https://sb-dataset.vercel.app/team/2026/MENTOR/SurabhiRajesh.jpg"
       }
     ]
+  },
+  {
+    id: "cs-e10",
+    slug: "letscrack-letscode-phase-iii",
+    title: "LetsCrack – LetsCode Phase III",
+    description: "An exciting coding competition designed to test your problem-solving skills, programming logic, coding speed, and algorithmic thinking. Activity Points Available & Certificates for all participants.",
+    date: "2026-07-15T16:00:00Z",
+    time: "4:00 PM – 5:30 PM",
+    venue: "Programming Lab",
+    price: "Free",
+    societyId: "cs",
+    status: "active",
+    registrationUrl: "https://kutti.link/lWOZ1o",
+    banner: "https://sb-dataset.vercel.app/events/cs/e10/1.jpeg",
+    tags: ["Coding Competition", "Logic", "Speed", "Algorithmic Thinking"],
+    gallery: [
+      "https://sb-dataset.vercel.app/events/cs/e10/1.jpeg"
+    ],
+    contacts: [
+      { name: "Ardra", phone: "+917306226029" },
+      { name: "Arjun", phone: "+918921928511" }
+    ]
   }
 ];
