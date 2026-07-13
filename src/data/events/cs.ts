@@ -188,8 +188,8 @@ export const csEvents: Event[] = [
     venue: "Programming Lab",
     price: "Free",
     societyId: "cs",
-    status: "active",
-    registrationUrl: "https://kutti.link/lWOZ1o",
+    status: "upcoming",
+    registrationUrl: "https://kutti.link/bLNxAH",
     banner: "https://sb-dataset.vercel.app/events/cs/e10/1.jpeg",
     tags: ["Coding Competition", "Logic", "Speed", "Algorithmic Thinking"],
     gallery: [
