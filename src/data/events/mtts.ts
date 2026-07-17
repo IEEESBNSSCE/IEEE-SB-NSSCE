@@ -19,7 +19,7 @@ export const mttsEvents: Event[] = [
   {
     id: "mtts-e2",
     slug: "Online-Workshop-on-CST-Microwave-Studio",
-    title: "Online Workshop on CST Microwave Studio",
+    title: "Introduction to Electromagnetic Simulation Tool",
     description: "Curious about how antennas, RF circuits, and microwave devices are designed before they are built?Join us for an exciting session on CST Microwave Studio, one of the most widely used electromagnetic simulation tools in the industry. Learn the basics of EM simulation and discover how it is used in real-world engineering applications.",
     date: "2026-07-18T07:00:00Z",
     venue: "Online",
