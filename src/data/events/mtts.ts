@@ -26,7 +26,7 @@ export const mttsEvents: Event[] = [
     price: "Free",
     societyId: "mtts", 
     registrationUrl: "https://forms.gle/wecZDjasp9XWnLcXA",
-    status: "upcoming",
+    status: "past",
     banner: "https://sb-dataset.vercel.app/events/mtts/e2/1.jpg",
     tags: ["Webinar"],
     gallery: [
