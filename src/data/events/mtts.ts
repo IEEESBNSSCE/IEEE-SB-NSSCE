@@ -32,5 +32,22 @@ export const mttsEvents: Event[] = [
     gallery: [
       "https://sb-dataset.vercel.app/events/mtts/e2/1.jpg"    ]
 
+  },
+  {
+    id: "mtts-e3",
+    slug: "hands-on-workshop-on-kicad-pcb-design",
+    title: "Hands-on Workshop on KiCad PCB Design",
+    description: "Ever wondered how electronic circuits are transformed into PCBs? Join us for an exciting 2-day hands-on KiCad Workshop and learn the complete PCB design workflow—from schematic creation to PCB layout and manufacturing-ready files. Discover how industry-standard PCB design tools are used to bring innovative electronic projects to life.",
+    date: "2026-07-21T10:30:00Z",
+    venue: "Online",
+    price: "Free",
+    societyId: "mtts", 
+    registrationUrl: "https://forms.gle/njr4sYtitPjVh87w7",
+    status: "past",
+    banner: "https://sb-dataset.vercel.app/events/mtts/e3/1.jpeg",
+    tags: ["Webinar"],
+    gallery: [
+      "https://sb-dataset.vercel.app/events/mtts/e3/1.jpeg"    ]
+
   }
 ];
