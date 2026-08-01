@@ -144,11 +144,11 @@ export const rasEvents: Event[] = [
       "https://sb-dataset.vercel.app/events/ras/e6/1.jpg"
     ]
   },
-    {
+  {
     id: "ras-e7",
     slug: "automating-the-future-ai-workflows-using-n8n",
     title: "Automating the Future: AI Workflows Using n8n",
-    description: "IEEE RAS SBC NSSCE is organizing a free online workshop on n8n, where participants will learn to build AI-powered workflows, automate repetitive tasks, connect applications, and create real-world automation solutions without writing complex code."    
+    description: "IEEE RAS SBC NSSCE is organizing a free online workshop on n8n, where participants will learn to build AI-powered workflows, automate repetitive tasks, connect applications, and create real-world automation solutions without writing complex code.",  
     date: "2026-08-08T09:00:00Z",
     venue: "Google Meet",
     time: "07:00 PM",
@@ -169,3 +169,4 @@ export const rasEvents: Event[] = [
       "https://sb-dataset.vercel.app/events/ras/e7/1.jpg"
     ]
   }
+];
