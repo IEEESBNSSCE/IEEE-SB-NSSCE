@@ -168,6 +168,4 @@ export const rasEvents: Event[] = [
     gallery: [
       "https://sb-dataset.vercel.app/events/ras/e7/1.jpg"
     ]
-  },
-
-];
+  }
