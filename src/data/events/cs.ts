@@ -199,5 +199,27 @@ export const csEvents: Event[] = [
       { name: "Ardra", phone: "+917306226029" },
       { name: "Arjun", phone: "+918921928511" }
     ]
-  }
+  },
+  {
+    id: "cs-e11",
+    slug: "WEB-DEV-BATTLE-2.0",
+    title: "WEB DEV BATTLE 2.0",
+    description: "IEEE CS SBC NSSCE , in collaboration with IEEE Computer Society Kerala Chapter & IEEE Young Professionals Kerala Section, proudly presents WEB DEV BATTLE 2.0 under the Informatyka 6.0 initiative. Put your web development skills to the test and build an innovative website that stands out! Whether you're a beginner or an experienced developer, this is your chance to showcase your creativity, improve your skills, and compete with fellow developers.",
+    date: "2026-08-02T16:00:00Z",
+    venue: "Online",
+    price: "Free",
+    societyId: "cs",
+    status: "upcoming",
+    registrationUrl: "https://kutti.link/XRL8oz",
+    banner: "https://sb-dataset.vercel.app/events/cs/e11/1.jpg",
+    tags: ["Web Development Competition", "Creativity", "Speed", "Design Thinking"],
+    gallery: [
+      "https://sb-dataset.vercel.app/events/cs/e11/1.jpg"
+    ],
+    contacts: [
+      { name: "Parvathy", phone: "+919207897197" },
+      { name: "Ardra", phone: "+917306226029" }
+    ]
+  },
+  
 ];
