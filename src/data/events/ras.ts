@@ -164,6 +164,7 @@ export const rasEvents: Event[] = [
       }
     ],
     banner: "https://sb-dataset.vercel.app/events/ras/e7/1.jpg",
+    registrationUrl: "http://bit.ly/4fsKNDe",
     tags: ["Talk Session"],
     gallery: [
       "https://sb-dataset.vercel.app/events/ras/e7/1.jpg"
