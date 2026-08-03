@@ -209,7 +209,7 @@ export const csEvents: Event[] = [
     venue: "Online",
     price: "Free",
     societyId: "cs",
-    status: "upcoming",
+    status: "past",
     registrationUrl: "https://kutti.link/XRL8oz",
     banner: "https://sb-dataset.vercel.app/events/cs/e11/1.jpg",
     tags: ["Web Development Competition", "Creativity", "Speed", "Design Thinking"],
