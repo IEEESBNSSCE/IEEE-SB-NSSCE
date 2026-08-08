@@ -154,7 +154,7 @@ export const rasEvents: Event[] = [
     time: "07:00 PM",
     price: "Free",
     societyId: "ras", 
-    status: "upcoming",
+    status: "past",
      speakers: [
       {
         name: "Gokul GK",
