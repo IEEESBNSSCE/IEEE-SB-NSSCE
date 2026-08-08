@@ -107,5 +107,31 @@ export const vtsEvents: Event[] = [
         photo: "https://sb-dataset.vercel.app/events/vts/e5/2.jpg"
       }
     ]
+  },
+   {
+    id: "vts-e6",
+    slug: "advent-of-electric-locomotives-talk-Session",
+    title: "Advent of Electric Locomotives - Talk Session",
+    description: "Join us for an insightful session & exploring the evolution of electric locomotives and their pivotal role in transforming Indian Railways into one of the world's largest and most sustainable railway networks. Discover the technology, innovations, and future of electric traction that powers millions of journeys every day. ",
+    date: "2026-08-05T15:30:00Z",
+    venue: "Google Meet",
+    time: "7:00 PM - 8:00 PM",
+    price: "free",
+    societyId: "vts", 
+    status: "past",
+    banner: "https://sb-dataset.vercel.app/events/vts/e6/1.jpeg",
+    tags: ["Talk Session","Webinar"],
+    registrationUrl: "https://forms.gle/MfhbRsi8HJ1YPkWk6",
+    gallery: [
+      "https://sb-dataset.vercel.app/events/vts/e6/1.jpeg",
+    ],
+    speakers: [
+      {
+        name: "Anjana Murali E",
+        designation: "Section Engineer – Electrical Power Indian Railways",
+        bio: "",
+        photo: "https://sb-dataset.vercel.app/team/default.png"
+      }
+    ]
   }
 ];
