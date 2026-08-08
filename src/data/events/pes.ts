@@ -51,5 +51,46 @@ export const pesEvents: Event[] = [
     gallery: [
       "https://sb-dataset.vercel.app/events/pes/e3/1.jpg"
     ]
+  },
+  {
+    id: "pes-e4",
+    slug: "ai-for-smart-power-systems-using-matlab",
+    title: "AI for Smart Power Systems using MATLAB: Hands-on Workshop",
+    description: "IEEE PES SBC NSSCE in collaboration with IEEE PES Kerala Chapter and EEE Department presents an exclusive hands-on workshop, 🎯 AI for Smart Power Systems using MATLAB 🎯 This hands-on workshop is designed to introduce participants to AI concepts and their practical implementation using MATLAB for smart power system applications. ",
+    date: "2026-08-11T09:00:00Z",
+    venue: "Online",
+    price: "₹ 100 only, For IEEE Members: ₹ 80 only, For IEEE PES Members:₹70 only",
+    societyId: "pes", 
+    status: "upcoming",
+    banner: "https://sb-dataset.vercel.app/events/pes/e4/1.jpeg",
+    tags: ["Worskshop","MATLAB "],
+    registrationUrl: "https://forms.gle/v1qtjs7Sf4B87T9V7",
+    gallery: [
+      "https://sb-dataset.vercel.app/events/pes/e4/1.jpeg"
+    ],
+    speakers: [
+      {
+        name: "Dr. Rahul Satheesh ",
+        designation: "Assistant Professor, Amrita School of Artificial Intelligence, Amrita Vishwa Vidyapeetham, Coimbatore, Secretary, IEEE PES Kerala Chapter",
+        bio: "",
+        photo: "https://sb-dataset.vercel.app/team/default.png"
+      },
+      {
+        name: "Dr. Muthukumari S ",
+        designation: "Postdoctoral Research Associate, Amrita Vishwa Vidyapeetham, Coimbatore",
+        bio: "",
+        photo: "https://sb-dataset.vercel.app/team/default.png"
+      },
+      {
+        name: "Ms. Sreshtamol K G",
+        designation: "Senior Research Fellow, Amrita Vishwa Vidyapeetham, Coimbatore",
+        bio: "",
+        photo: "https://sb-dataset.vercel.app/team/default.png"
+      },
+    ],
+    contacts: [
+      { name: "Krishna J", phone: "8590491308" },
+      { name: "Abhinav", phone: "82810 71974" }
+    ]
   }
 ];
