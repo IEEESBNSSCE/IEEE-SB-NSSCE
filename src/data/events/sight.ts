@@ -99,5 +99,26 @@ export const sightEvents: Event[] = [
       "https://sb-dataset.vercel.app/events/sight/e4/1.jpg"
     ]
   },
+  {
+    id: "sight-e5",
+    slug: "insight-one-quiz-every-topic-zero-excuses",
+    title: "InSight: One quiz. Every topic. Zero excuses.",
+    description: "Think you've got the brains? Time to prove it. 🧠⚡No Google. No lifelines. IEEE SIGHT SB NSSCE and Qpounce presents InSight!!One quiz. Every topic. Zero excuses. Just you, your squad, and a room full of questions that'll keep you on your toes. Grab two teammates and battle through a quiz packed with twists, surprises, and I definitely knew that moments. Make it through the prelims, survive the mains, and take home the prize. The cheapest gamble you'll make this week. 😉Skip one café visit. Win ₹4,000 instead. 👀Prelims: Wednesday, 5th August📅 Mains: Thurday, 6th August🕓 Time: 4:15 PM – 6:00 PM📍 Venue: PTIB Hall👥 Team Size: 1 to 3 Members💰 Registration Fee: ₹75 per team🏆 Prize Pool: ₹4,000🎙️ Quizmaster: Anurudh RK (S7 ECE) ",
+    date: "2026-08-05T09:00:00Z",
+    venue: "PTIB Hall",
+    price: "Free",
+    societyId: "sight", 
+    status: "past",
+    banner: "https://sb-dataset.vercel.app/events/sight/e5/1.jpeg",
+    tags: ["Quiz"],
+    contacts: [
+      { name: "Saniya", phone: "7617310311" },
+      { name: "Anurudh RK", phone: "8281172466" }
+    ],
+    gallery: [
+      "https://sb-dataset.vercel.app/events/sight/e5/1.jpeg"
+    ]
+  },
+
 
 ];
