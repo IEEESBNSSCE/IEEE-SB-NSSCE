@@ -61,7 +61,7 @@ export const pesEvents: Event[] = [
     venue: "Online",
     price: "₹ 100 only, For IEEE Members: ₹ 80 only, For IEEE PES Members:₹70 only",
     societyId: "pes", 
-    status: "upcoming",
+    status: "past",
     banner: "https://sb-dataset.vercel.app/events/pes/e4/1.jpeg",
     tags: ["Worskshop","MATLAB "],
     registrationUrl: "https://forms.gle/v1qtjs7Sf4B87T9V7",
