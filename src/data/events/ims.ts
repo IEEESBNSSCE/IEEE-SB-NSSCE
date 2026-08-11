@@ -11,7 +11,7 @@ export const imsEvents: Event[] = [
     time: "7:00 PM to 8:00 PM",
     price: "Google Meet",
     societyId: "ims", 
-    status: "upcoming",
+    status: "past",
     banner: "https://sb-dataset.vercel.app/events/ims/e1/1.jpeg",
     tags: ["Talk Session", "Instrumentation"],
     registrationUrl: "https://docs.google.com/forms/d/e/1FAIpQLScCbs0Gu0GFHE1ngzOilY3QclboZbi59d-7DQp8QqHKRRNsDA/viewform",
