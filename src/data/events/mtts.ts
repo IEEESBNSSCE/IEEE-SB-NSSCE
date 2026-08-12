@@ -62,10 +62,10 @@ export const mttsEvents: Event[] = [
     societyId: "mtts",
     status: "upcoming",
     registrationUrl: "https://forms.gle/jUr38G7QQbJ3BTgZA",
-    banner: "https://sb-dataset.vercel.app/events/mtts/e4/1.jpg",
+    banner: "https://sb-dataset.vercel.app/events/mtts/e4/1.jpeg",
     tags: ["Webinar", "Energy Harvesting", "ADS"],
     gallery: [
-      "https://sb-dataset.vercel.app/events/mtts/e4/1.jpg"
+      "https://sb-dataset.vercel.app/events/mtts/e4/1.jpeg"
     ],
     contacts: [
       { name: "Revathy V", phone: "+919778472404" },
@@ -76,7 +76,7 @@ export const mttsEvents: Event[] = [
         name: "Sankar Reghunath",
         designation: "M.Tech Scholar, IIT Kanpur | Agmatel India Pvt. Ltd., New Delhi",
         bio: "Sankar Reghunath is an alumnus of B.Tech ECE (Batch of 2023), NSSCE, and is currently an M.Tech scholar (2024–2026) at IIT Kanpur, working with Agmatel India Pvt. Ltd., New Delhi.",
-        photo: "https://sb-dataset.vercel.app/team/2026/ALUMNI/SankarReghunath.jpg"
+        photo: "https://sb-dataset.vercel.app/events/mtts/e4/2.jpeg"
       }
     ]
   }
