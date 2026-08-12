@@ -49,5 +49,35 @@ export const mttsEvents: Event[] = [
     gallery: [
       "https://sb-dataset.vercel.app/events/mtts/e3/1.jpeg"    ]
 
+  },
+  {
+    id: "mtts-e4",
+    slug: "introduction-to-energy-harvesting",
+    title: "Introduction to Energy Harvesting",
+    description: "IEEE MTT-S SBC NSSCE presents an online technical session introducing the fundamentals of energy harvesting, exploring its real-world applications, and providing insights into how ADS (Advanced Design System) software can be used in related design and simulation.",
+    date: "2026-08-14T09:00:00Z",
+    time: "7:30–9:00 PM",
+    venue: "Online",
+    price: "Free",
+    societyId: "mtts",
+    status: "upcoming",
+    registrationUrl: "https://forms.gle/jUr38G7QQbJ3BTgZA",
+    banner: "https://sb-dataset.vercel.app/events/mtts/e4/1.jpg",
+    tags: ["Webinar", "Energy Harvesting", "ADS"],
+    gallery: [
+      "https://sb-dataset.vercel.app/events/mtts/e4/1.jpg"
+    ],
+    contacts: [
+      { name: "Revathy V", phone: "+919778472404" },
+      { name: "Arya J", phone: "+919207841" }
+    ],
+    speakers: [
+      {
+        name: "Sankar Reghunath",
+        designation: "M.Tech Scholar, IIT Kanpur | Agmatel India Pvt. Ltd., New Delhi",
+        bio: "Sankar Reghunath is an alumnus of B.Tech ECE (Batch of 2023), NSSCE, and is currently an M.Tech scholar (2024–2026) at IIT Kanpur, working with Agmatel India Pvt. Ltd., New Delhi.",
+        photo: "https://sb-dataset.vercel.app/team/2026/ALUMNI/SankarReghunath.jpg"
+      }
+    ]
   }
 ];
