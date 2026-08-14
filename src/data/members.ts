@@ -408,6 +408,14 @@ export const members: Member[] = [
     year: 2026,
     photo: "https://sb-dataset.vercel.app/team/2026/CS/ThusharaKJ.jpg",
   },
+  {
+    id: "26cs16",
+    name: "Arjun K",
+    position: "Core Member",
+    societyId: "cs",
+    year: 2026,
+    photo: "https://sb-dataset.vercel.app/team/2026/CS/arjunkk.jpeg",
+  },
 
   //PES 2026
   {
@@ -767,6 +775,14 @@ export const members: Member[] = [
     societyId: "ias",
     year: 2026,
     photo: "https://sb-dataset.vercel.app/team/2026/IAS/Amrutha.jpg",
+  },
+   {
+    id: "26ias11",
+    name: "Arjun Krishna R Pillai",
+    position: "Core Member",
+    societyId: "ias",
+    year: 2026,
+    photo: "https://sb-dataset.vercel.app/team/2026/IAS/arjunp.jpeg",
   },
 
   //COMSOC 2026
