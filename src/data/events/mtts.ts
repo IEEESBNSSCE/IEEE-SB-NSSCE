@@ -60,7 +60,7 @@ export const mttsEvents: Event[] = [
     venue: "Online",
     price: "Free",
     societyId: "mtts",
-    status: "upcoming",
+    status: "past",
     registrationUrl: "https://forms.gle/jUr38G7QQbJ3BTgZA",
     banner: "https://sb-dataset.vercel.app/events/mtts/e4/1.jpeg",
     tags: ["Webinar", "Energy Harvesting", "ADS"],
