@@ -573,6 +573,14 @@ export const members: Member[] = [
     photo: "https://sb-dataset.vercel.app/team/2026/RAS/Radhika.jpg",
   },
   {
+    id: "26ras13",
+    name: "Anagha Sasikumar",
+    position: "Design Lead",
+    societyId: "ras",
+    year: 2026,
+    photo: "https://sb-dataset.vercel.app/team/2026/RAS/Anagha.jpg",
+  },
+  {
     id: "26ras8",
     name: "Avani KS",
     position: "Core Member",
@@ -611,6 +619,14 @@ export const members: Member[] = [
     societyId: "ras",
     year: 2026,
     photo: "https://sb-dataset.vercel.app/team/2026/RAS/DevDarshan.jpg",
+  },
+  {
+    id: "26ras14",
+    name: "Shreya PK",
+    position: "Core Member",
+    societyId: "ras",
+    year: 2026,
+    photo: "https://sb-dataset.vercel.app/team/2026/RAS/ShreyaPK.jpeg",
   },
 
   //WIE 2026
