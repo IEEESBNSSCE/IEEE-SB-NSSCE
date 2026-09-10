@@ -132,5 +132,36 @@ export const pelsEvents: Event[] = [
     ]
 
   },
+  {
+  id: "pels-e7",
+  slug: "smart-grid-horizons",
+  title: "SMART GRID HORIZONS",
+  description: "Exploring the Future of Intelligent Power Systems. IEEE PELS SBC NSSCE & IEEE VTS SBC NSSCE proudly presents.... SCADA, SMART METERING & ADVANCED AUTOMATION : From Grid Monitoring to Intelligent Automation A technical session on SCADA, smart metering, and smart-grid automation, featuring real-world insights and industry practices from an experienced KSEBL professional.",
+  date: "2026-09-15T13:30:00Z",
+  time: "10:00 am",
+  venue: "EEE Seminar Hall, NSSCE",
+  price: "Free",
+  societyId: "pels",
+  status: "upcoming",
+  registrationUrl:"https://forms.gle/BPzUbinZxMU9hjqa7",
+  banner: "https://sb-dataset.vercel.app/events/pels/e7/bann.jpeg",
+  tags: ["Smart Grid","Scada","Smart Metering", "Advanced Automation"],
+  gallery: [
+    "https://sb-dataset.vercel.app/events/pels/e7/bann.jpeg"
+  ],
+  contacts: [
+      { name: "Vismaya", phone: "+916238766919" },
+      { name: "Sreedevi", phone: "+919074488903" }
+    ],
+    speakers: [
+    {
+      name: "Er. T. P. Unnikrishnan",
+      designation: "Former Deputy Chief Engineer, KSEBL & Author",
+      bio: "Former Deputy Chief Engineer, KSEBL & Author",
+      photo: "https://sb-dataset.vercel.app/events/pels/e7/pfp.jpeg"
+    }
+    ]
+
+  },
 
 ];
