@@ -186,6 +186,25 @@ export const execomEvents: Event[] = [
       photo: "https://sb-dataset.vercel.app/team/2026/SB/Vijitha.jpg"
     }
   ]
-  }
-
+  },
+  {
+  id: "execom-e8",
+  slug: "IEEE-SB-NSSCE-Membership-Drive-2026",
+  title: "IEEE SB NSSCE Membership Drive 2026",
+  description: "Join IEEE, the world’s largest professional community of engineers and technology enthusiasts! ✨Benefits: Global technical resources, Networking opportunities, Technical workshops, Career growth and skill development, competitions & other events. How to Join: 1. Fill out this Google Form. 2. IEEE seniors will guide you through the membership process. 2. Fee details are provided in the gform. 3. The Society Membership fee will be informed during registration. 4. Any balance amount will be returned after the membership process",
+  date: "2026-10-16T10:00:00Z",
+  venue: "Online",
+  societyId: "execom",
+  status: "featured",
+  banner: "https://sb-dataset.vercel.app/gallery/141.jpeg",
+  tags: ["IEEE", "Membership", "Session", "Professional Growth"],
+  registrationUrl: "https://forms.gle/XTNMbLryjQL1xfp17",
+  contacts: [
+    { name: "Sooryadev P", phone: "+91 8075234427" },
+    { name: "Agnes Jose", phone: "+91 8138833589" }
+  ],
+  gallery: [
+    "https://sb-dataset.vercel.app/gallery/141.jpeg",
+  ]
+  },
 ];
