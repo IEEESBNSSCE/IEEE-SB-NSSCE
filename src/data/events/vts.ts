@@ -133,5 +133,32 @@ export const vtsEvents: Event[] = [
         photo: "https://sb-dataset.vercel.app/team/default.png"
       }
     ]
+  },
+  {
+    id: "vts-e7",
+    slug: "hybrid-vehicles-from-fundamentals-to-future-mobility-talk-session",
+    title: "HYBRID VEHICLES: FROM FUNDAMENTALS TO FUTURE MOBILITY",
+    description: " Join us for an insightful session exploring how hybrid vehicles work, their key technologies, and the road ahead for sustainable, efficient, and smarter mobility. Discover the fundamentals of hybrid vehicles, the technologies behind their operation, and the future of intelligent mobility ",
+    date: "2026-10-03T15:30:00Z",
+    venue: "Google Meet",
+    time: "7:30 PM - 8:30 PM",
+    price: "free",
+    societyId: "vts", 
+    status: "past",
+    banner: "https://sb-dataset.vercel.app/events/vts/e7/e7.jpeg",
+    tags: ["Talk Session","Webinar"],
+    registrationUrl: " https://forms.gle/SdPz8HUdq184aWoB7",
+    gallery: [
+      "https://sb-dataset.vercel.app/events/vts/e7/e7.jpeg",
+    ],
+    speakers: [
+      {
+        name: "Archana A N ",
+        designation: "EV Validation Engineer -Jaguar Land Rover, United Kingdom",
+        bio: "(Deputed through Tata Elxsi, Thiruvananthapuram)",
+        photo: "https://sb-dataset.vercel.app/team/default.png"
+      }
+    ]
   }
+
 ];
