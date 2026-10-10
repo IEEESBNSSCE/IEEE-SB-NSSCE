@@ -144,7 +144,7 @@ export const vtsEvents: Event[] = [
     time: "7:30 PM - 8:30 PM",
     price: "free",
     societyId: "vts", 
-    status: "upcoming",
+    status: "past",
     banner: "https://sb-dataset.vercel.app/events/vts/e7/e7.jpeg",
     tags: ["Talk Session","Webinar"],
     registrationUrl: " https://forms.gle/SdPz8HUdq184aWoB7",
